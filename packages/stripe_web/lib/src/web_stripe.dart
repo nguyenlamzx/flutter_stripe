@@ -184,13 +184,48 @@ class WebStripe extends StripePlatform {
     final response =
         await data.maybeWhen<Future<stripe_js.SetupIntentResponse>>(
       card: (params) {
-        return _confirmCardSetup(setupIntentClientSecret, params: params);
+        final data = stripe_js.ConfirmCardSetupData(
+          paymentMethod: stripe_js.CardPaymentMethodDetails(
+            card: element!,
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        print('_confirmSepaSetup: ${data.toJson()}');
+        return js.confirmCardSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
       },
       sepaDebit: (params) {
-        return _confirmSepaSetup(setupIntentClientSecret, params: params);
+        final data = stripe_js.ConfirmSepaDebitSetupData(
+          // paymentMethod: params.toString(),
+          paymentMethod: stripe_js.SepaDebitPaymentMethodDetails.withIban(
+            sepaDebit: stripe_js.SepaDebitIbanData(iban: params.iban),
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        print('_confirmSepaSetup: ${data.toJson()}');
+        return js.confirmSepaDebitSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
       },
       bacsDebit: (params) {
-        return _confirmBacsSetup(setupIntentClientSecret, params: params);
+        final data = stripe_js.ConfirmBacsDebitSetupData(
+          // paymentMethod: params.toString(),
+          paymentMethod: stripe_js.BacsDebitPaymentMethodDetails.withValue(
+            bacsDebit: stripe_js.BacsDebitIbanData(
+              accountNumber: params.accountNumber,
+              sortCode: params.sortCode,
+            ),
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        print('_confirmSepaSetup: ${data.toJson()}');
+        return js.confirmBacsDebitSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
       },
       orElse: () {
         throw UnimplementedError();
@@ -201,59 +236,6 @@ class WebStripe extends StripePlatform {
     }
 
     return response.setupIntent!.parse();
-  }
-
-  Future<stripe_js.SetupIntentResponse> _confirmCardSetup(
-    String setupIntentClientSecret, {
-    required PaymentMethodData params,
-  }) {
-    final data = stripe_js.ConfirmCardSetupData(
-      paymentMethod: stripe_js.CardPaymentMethodDetails(
-        card: element!,
-        billingDetails: params.billingDetails?.toJs(),
-      ),
-    );
-    return js.confirmCardSetup(
-      setupIntentClientSecret,
-      data: data,
-    );
-  }
-
-  Future<stripe_js.SetupIntentResponse> _confirmSepaSetup(
-    String setupIntentClientSecret, {
-    required PaymentMethodDataSepa params,
-  }) {
-    final data = stripe_js.ConfirmSepaDebitSetupData(
-      // paymentMethod: params.toString(),
-      paymentMethod: stripe_js.SepaDebitPaymentMethodDetails.withIban(
-        sepaDebit: stripe_js.SepaDebitIbanData(iban: params.iban),
-        billingDetails: params.billingDetails?.toJs(),
-      ),
-    );
-    return js.confirmSepaDebitSetup(
-      setupIntentClientSecret,
-      data: data,
-    );
-  }
-
-  Future<stripe_js.SetupIntentResponse> _confirmBacsSetup(
-    String setupIntentClientSecret, {
-    required PaymentMethodDataBacs params,
-  }) {
-    final data = stripe_js.ConfirmBacsDebitSetupData(
-      // paymentMethod: params.toString(),
-      paymentMethod: stripe_js.BacsDebitPaymentMethodDetails.withValue(
-        bacsDebit: stripe_js.BacsDebitIbanData(
-          accountNumber: params.accountNumber,
-          sortCode: params.sortCode,
-        ),
-        billingDetails: params.billingDetails?.toJs(),
-      ),
-    );
-    return js.confirmBacsDebitSetup(
-      setupIntentClientSecret,
-      data: data,
-    );
   }
 
   @override
