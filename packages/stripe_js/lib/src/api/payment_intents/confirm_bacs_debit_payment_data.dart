@@ -47,7 +47,7 @@ class BacsDebitPaymentMethodDetails
     @JsonKey(name: "bacs_debit") @ElementConverter() required Element BacsDebit,
 
     /// The customer's billing_details. name and email are required.
-    @JsonKey(name: "billing_details") BacsBillingDetails? billingDetails,
+    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
   }) = _BacsDebitPaymentMethodDetails;
 
   /// If you already know the customer’s bank or want to collect it yourself,

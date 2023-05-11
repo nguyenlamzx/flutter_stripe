@@ -59,7 +59,7 @@ _$_BacsDebitPaymentMethodDetails _$$_BacsDebitPaymentMethodDetailsFromJson(
       BacsDebit: const ElementConverter().fromJson(json['bacs_debit']),
       billingDetails: json['billing_details'] == null
           ? null
-          : BacsBillingDetails.fromJson(
+          : BillingDetails.fromJson(
               Map<String, dynamic>.from(json['billing_details'] as Map)),
       $type: json['type'] as String?,
     );

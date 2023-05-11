@@ -270,11 +270,8 @@ mixin _$BacsDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -286,11 +283,8 @@ mixin _$BacsDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -301,11 +295,8 @@ mixin _$BacsDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -441,11 +432,8 @@ class _$_IdBacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -460,11 +448,8 @@ class _$_IdBacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -478,11 +463,8 @@ class _$_IdBacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -563,9 +545,9 @@ abstract class _$$_BacsDebitPaymentMethodDetailsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
-      @JsonKey(name: "billing_details") BacsBillingDetails? billingDetails});
+      @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
-  $BacsBillingDetailsCopyWith<$Res>? get billingDetails;
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -592,18 +574,18 @@ class __$$_BacsDebitPaymentMethodDetailsCopyWithImpl<$Res>
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BacsBillingDetails?,
+              as BillingDetails?,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $BacsBillingDetailsCopyWith<$Res>? get billingDetails {
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
     if (_value.billingDetails == null) {
       return null;
     }
 
-    return $BacsBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
       return _then(_value.copyWith(billingDetails: value));
     });
   }
@@ -632,7 +614,7 @@ class _$_BacsDebitPaymentMethodDetails
   /// The customer's billing_details. name and email are required.
   @override
   @JsonKey(name: "billing_details")
-  final BacsBillingDetails? billingDetails;
+  final BillingDetails? billingDetails;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -668,11 +650,8 @@ class _$_BacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -687,11 +666,8 @@ class _$_BacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -705,11 +681,8 @@ class _$_BacsDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -773,7 +746,7 @@ abstract class _BacsDebitPaymentMethodDetails
           @ElementConverter()
               required final Element BacsDebit,
           @JsonKey(name: "billing_details")
-              final BacsBillingDetails? billingDetails}) =
+              final BillingDetails? billingDetails}) =
       _$_BacsDebitPaymentMethodDetails;
 
   factory _BacsDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
@@ -786,7 +759,7 @@ abstract class _BacsDebitPaymentMethodDetails
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
-  BacsBillingDetails? get billingDetails;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$$_BacsDebitPaymentMethodDetailsCopyWith<_$_BacsDebitPaymentMethodDetails>
       get copyWith => throw _privateConstructorUsedError;
@@ -915,11 +888,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -934,11 +904,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
@@ -952,11 +919,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "bacs_debit")
-            @ElementConverter()
-                Element BacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+            @JsonKey(name: "bacs_debit") @ElementConverter() Element BacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,

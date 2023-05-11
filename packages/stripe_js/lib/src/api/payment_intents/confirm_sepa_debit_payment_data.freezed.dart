@@ -270,11 +270,8 @@ mixin _$SepaDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -286,11 +283,8 @@ mixin _$SepaDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -301,11 +295,8 @@ mixin _$SepaDebitPaymentMethodDetails {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -441,11 +432,8 @@ class _$_IdSepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -460,11 +448,8 @@ class _$_IdSepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -478,11 +463,8 @@ class _$_IdSepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -563,9 +545,9 @@ abstract class _$$_SepaDebitPaymentMethodDetailsCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-      @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails});
+      @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails;
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -592,18 +574,18 @@ class __$$_SepaDebitPaymentMethodDetailsCopyWithImpl<$Res>
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
-              as SepaBillingDetails?,
+              as BillingDetails?,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
     if (_value.billingDetails == null) {
       return null;
     }
 
-    return $SepaBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
       return _then(_value.copyWith(billingDetails: value));
     });
   }
@@ -632,7 +614,7 @@ class _$_SepaDebitPaymentMethodDetails
   /// The customer's billing_details. name and email are required.
   @override
   @JsonKey(name: "billing_details")
-  final SepaBillingDetails? billingDetails;
+  final BillingDetails? billingDetails;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -668,11 +650,8 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -687,11 +666,8 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -705,11 +681,8 @@ class _$_SepaDebitPaymentMethodDetails
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -773,7 +746,7 @@ abstract class _SepaDebitPaymentMethodDetails
           @ElementConverter()
               required final Element sepaDebit,
           @JsonKey(name: "billing_details")
-              final SepaBillingDetails? billingDetails}) =
+              final BillingDetails? billingDetails}) =
       _$_SepaDebitPaymentMethodDetails;
 
   factory _SepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
@@ -786,7 +759,7 @@ abstract class _SepaDebitPaymentMethodDetails
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
-  SepaBillingDetails? get billingDetails;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$$_SepaDebitPaymentMethodDetailsCopyWith<_$_SepaDebitPaymentMethodDetails>
       get copyWith => throw _privateConstructorUsedError;
@@ -915,11 +888,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
@@ -934,11 +904,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
     TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
@@ -952,11 +919,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            @JsonKey(name: "sepa_debit")
-            @ElementConverter()
-                Element sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+            @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
     TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,

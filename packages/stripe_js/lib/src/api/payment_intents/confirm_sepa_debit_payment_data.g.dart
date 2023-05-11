@@ -59,7 +59,7 @@ _$_SepaDebitPaymentMethodDetails _$$_SepaDebitPaymentMethodDetailsFromJson(
       sepaDebit: const ElementConverter().fromJson(json['sepa_debit']),
       billingDetails: json['billing_details'] == null
           ? null
-          : SepaBillingDetails.fromJson(
+          : BillingDetails.fromJson(
               Map<String, dynamic>.from(json['billing_details'] as Map)),
       $type: json['type'] as String?,
     );
