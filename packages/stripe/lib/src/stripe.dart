@@ -454,6 +454,8 @@ class Stripe {
       return setupIntent;
     } on StripeException {
       rethrow;
+    } on StripeError {
+      rethrow;
     }
   }
 
