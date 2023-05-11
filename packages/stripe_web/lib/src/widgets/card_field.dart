@@ -140,6 +140,14 @@ class WebStripeCardState extends State<WebCardField> with CardFieldContext {
   js.CardElementOptions createOptions() {
     return js.CardElementOptions(
       hidePostalCode: !widget.enablePostalCode,
+      style: {
+        'base': {
+          'color': widget.style?.textColor?.value.toRadixString(16),
+        },
+        'complete': {
+          'color': widget.style?.textColor?.value.toRadixString(16),
+        }
+      },
     );
   }
 
