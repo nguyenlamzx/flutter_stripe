@@ -278,10 +278,8 @@ mixin _$SepaDebitPaymentMethodDetails {
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withIban,
   }) =>
       throw _privateConstructorUsedError;
@@ -295,11 +293,8 @@ mixin _$SepaDebitPaymentMethodDetails {
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
   }) =>
       throw _privateConstructorUsedError;
@@ -313,11 +308,8 @@ mixin _$SepaDebitPaymentMethodDetails {
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) =>
@@ -457,10 +449,8 @@ class _$_IdSepaDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withIban,
   }) {
     return id(this.id);
@@ -477,11 +467,8 @@ class _$_IdSepaDebitPaymentMethodDetails
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
   }) {
     return id?.call(this.id);
@@ -498,11 +485,8 @@ class _$_IdSepaDebitPaymentMethodDetails
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -692,10 +676,8 @@ class _$_SepaDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withIban,
   }) {
     return $default(sepaDebit, billingDetails);
@@ -712,11 +694,8 @@ class _$_SepaDebitPaymentMethodDetails
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
   }) {
     return $default?.call(sepaDebit, billingDetails);
@@ -733,11 +712,8 @@ class _$_SepaDebitPaymentMethodDetails
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -825,10 +801,10 @@ abstract class _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-      @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails});
+      @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
   $SepaDebitIbanDataCopyWith<$Res> get sepaDebit;
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails;
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -855,7 +831,7 @@ class __$$_SepaDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
-              as SepaBillingDetails?,
+              as BillingDetails?,
     ));
   }
 
@@ -869,12 +845,12 @@ class __$$_SepaDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $SepaBillingDetailsCopyWith<$Res>? get billingDetails {
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
     if (_value.billingDetails == null) {
       return null;
     }
 
-    return $SepaBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
       return _then(_value.copyWith(billingDetails: value));
     });
   }
@@ -902,7 +878,7 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   /// The customer's billing_details. name and email are required.
   @override
   @JsonKey(name: "billing_details")
-  final SepaBillingDetails? billingDetails;
+  final BillingDetails? billingDetails;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -947,10 +923,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withIban,
   }) {
     return withIban(sepaDebit, billingDetails);
@@ -967,11 +941,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
   }) {
     return withIban?.call(sepaDebit, billingDetails);
@@ -988,11 +959,8 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
                 SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "sepa_debit")
-                SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details")
-                SepaBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -1051,7 +1019,7 @@ abstract class _SepaDebitPaymentMethodDetailsWithIban
           {@JsonKey(name: "sepa_debit")
               required final SepaDebitIbanData sepaDebit,
           @JsonKey(name: "billing_details")
-              final SepaBillingDetails? billingDetails}) =
+              final BillingDetails? billingDetails}) =
       _$_SepaDebitPaymentMethodDetailsWithIban;
 
   factory _SepaDebitPaymentMethodDetailsWithIban.fromJson(
@@ -1064,7 +1032,7 @@ abstract class _SepaDebitPaymentMethodDetailsWithIban
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
-  SepaBillingDetails? get billingDetails;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$$_SepaDebitPaymentMethodDetailsWithIbanCopyWith<
           _$_SepaDebitPaymentMethodDetailsWithIban>

@@ -227,9 +227,7 @@ class WebStripe extends StripePlatform {
       // paymentMethod: params.toString(),
       paymentMethod: stripe_js.SepaDebitPaymentMethodDetails.withIban(
         sepaDebit: stripe_js.SepaDebitIbanData(iban: params.iban),
-        billingDetails: stripe_js.SepaBillingDetails.fromJson(
-          params.billingDetails?.toJson() ?? {},
-        ),
+        billingDetails: params.billingDetails?.toJs(),
       ),
     );
     return js.confirmSepaDebitSetup(
@@ -249,9 +247,7 @@ class WebStripe extends StripePlatform {
           accountNumber: params.accountNumber,
           sortCode: params.sortCode,
         ),
-        billingDetails: stripe_js.BacsBillingDetails.fromJson(
-          params.billingDetails?.toJson() ?? {},
-        ),
+        billingDetails: params.billingDetails?.toJs(),
       ),
     );
     return js.confirmBacsDebitSetup(

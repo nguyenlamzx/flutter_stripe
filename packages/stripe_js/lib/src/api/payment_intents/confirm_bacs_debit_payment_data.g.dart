@@ -88,7 +88,7 @@ _$_BacsDebitPaymentMethodDetailsWithIban
               Map<String, dynamic>.from(json['bacs_debit'] as Map)),
           billingDetails: json['billing_details'] == null
               ? null
-              : BacsBillingDetails.fromJson(
+              : BillingDetails.fromJson(
                   Map<String, dynamic>.from(json['billing_details'] as Map)),
           $type: json['type'] as String?,
         );

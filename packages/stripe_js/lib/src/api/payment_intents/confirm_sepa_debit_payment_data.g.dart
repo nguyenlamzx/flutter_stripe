@@ -88,7 +88,7 @@ _$_SepaDebitPaymentMethodDetailsWithIban
               Map<String, dynamic>.from(json['sepa_debit'] as Map)),
           billingDetails: json['billing_details'] == null
               ? null
-              : SepaBillingDetails.fromJson(
+              : BillingDetails.fromJson(
                   Map<String, dynamic>.from(json['billing_details'] as Map)),
           $type: json['type'] as String?,
         );

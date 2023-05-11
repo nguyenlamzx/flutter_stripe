@@ -60,7 +60,7 @@ class SepaDebitPaymentMethodDetails
     @JsonKey(name: "sepa_debit") required SepaDebitIbanData sepaDebit,
 
     /// The customer's billing_details. name and email are required.
-    @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails,
+    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
   }) = _SepaDebitPaymentMethodDetailsWithIban;
 
   factory SepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>

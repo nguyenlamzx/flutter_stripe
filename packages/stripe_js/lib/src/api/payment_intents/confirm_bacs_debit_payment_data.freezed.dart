@@ -278,10 +278,8 @@ mixin _$BacsDebitPaymentMethodDetails {
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) =>
       throw _privateConstructorUsedError;
@@ -295,11 +293,8 @@ mixin _$BacsDebitPaymentMethodDetails {
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) =>
       throw _privateConstructorUsedError;
@@ -313,11 +308,8 @@ mixin _$BacsDebitPaymentMethodDetails {
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
   }) =>
@@ -457,10 +449,8 @@ class _$_IdBacsDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
     return id(this.id);
@@ -477,11 +467,8 @@ class _$_IdBacsDebitPaymentMethodDetails
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
     return id?.call(this.id);
@@ -498,11 +485,8 @@ class _$_IdBacsDebitPaymentMethodDetails
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
   }) {
@@ -692,10 +676,8 @@ class _$_BacsDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
     return $default(BacsDebit, billingDetails);
@@ -712,11 +694,8 @@ class _$_BacsDebitPaymentMethodDetails
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
     return $default?.call(BacsDebit, billingDetails);
@@ -733,11 +712,8 @@ class _$_BacsDebitPaymentMethodDetails
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
   }) {
@@ -825,10 +801,10 @@ abstract class _$$_BacsDebitPaymentMethodDetailsWithIbanCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
-      @JsonKey(name: "billing_details") BacsBillingDetails? billingDetails});
+      @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
   $BacsDebitIbanDataCopyWith<$Res> get bacsDebit;
-  $BacsBillingDetailsCopyWith<$Res>? get billingDetails;
+  $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
 /// @nodoc
@@ -855,7 +831,7 @@ class __$$_BacsDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
-              as BacsBillingDetails?,
+              as BillingDetails?,
     ));
   }
 
@@ -869,12 +845,12 @@ class __$$_BacsDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $BacsBillingDetailsCopyWith<$Res>? get billingDetails {
+  $BillingDetailsCopyWith<$Res>? get billingDetails {
     if (_value.billingDetails == null) {
       return null;
     }
 
-    return $BacsBillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
+    return $BillingDetailsCopyWith<$Res>(_value.billingDetails!, (value) {
       return _then(_value.copyWith(billingDetails: value));
     });
   }
@@ -902,7 +878,7 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
   /// The customer's billing_details. name and email are required.
   @override
   @JsonKey(name: "billing_details")
-  final BacsBillingDetails? billingDetails;
+  final BillingDetails? billingDetails;
 
   @JsonKey(name: 'type')
   final String $type;
@@ -947,10 +923,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)
+            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
     return withValue(bacsDebit, billingDetails);
@@ -967,11 +941,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
     return withValue?.call(bacsDebit, billingDetails);
@@ -988,11 +959,8 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
                 BacsBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(
-            @JsonKey(name: "bacs_debit")
-                BacsDebitIbanData bacsDebit,
-            @JsonKey(name: "billing_details")
-                BacsBillingDetails? billingDetails)?
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
   }) {
@@ -1051,7 +1019,7 @@ abstract class _BacsDebitPaymentMethodDetailsWithIban
           {@JsonKey(name: "bacs_debit")
               required final BacsDebitIbanData bacsDebit,
           @JsonKey(name: "billing_details")
-              final BacsBillingDetails? billingDetails}) =
+              final BillingDetails? billingDetails}) =
       _$_BacsDebitPaymentMethodDetailsWithIban;
 
   factory _BacsDebitPaymentMethodDetailsWithIban.fromJson(
@@ -1064,7 +1032,7 @@ abstract class _BacsDebitPaymentMethodDetailsWithIban
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
-  BacsBillingDetails? get billingDetails;
+  BillingDetails? get billingDetails;
   @JsonKey(ignore: true)
   _$$_BacsDebitPaymentMethodDetailsWithIbanCopyWith<
           _$_BacsDebitPaymentMethodDetailsWithIban>

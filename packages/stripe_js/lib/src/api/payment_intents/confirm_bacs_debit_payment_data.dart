@@ -60,7 +60,7 @@ class BacsDebitPaymentMethodDetails
     @JsonKey(name: "bacs_debit") required BacsDebitIbanData bacsDebit,
 
     /// The customer's billing_details. name and email are required.
-    @JsonKey(name: "billing_details") BacsBillingDetails? billingDetails,
+    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
   }) = _BacsDebitPaymentMethodDetailsWithIban;
 
   factory BacsDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
