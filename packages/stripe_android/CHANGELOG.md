@@ -1,3 +1,30 @@
+## 9.3.0
+**Features**
+- Add method for retrieve setupintent.
+
+**Fixes**
+- Calling confirm payment without params won't crash #1246 
+- Fix inproper calling of cashapp payment method. #1313
+- Sync with Stripe [0.28.0](https://github.com/stripe/stripe-react-native/releases/tag/v0.28.0).
+
+## 9.2.1
+**Fixes**
+- Move amount value to GooglePayPaymentMethodParams #1255 
+- iOS: Apple Pay updatePlatformSheet now pass the errors #1230
+- iOS: Fixes styling parameter for ApplePayButton #1231
+- Android: Fixes bug that to display image in card form #1254
+- Sync with Stripe [0.27.1](https://github.com/stripe/stripe-react-native/releases/tag/v0.27.1).
+
+## 9.2.0
+**Features**
+- Add `BillingDetailsCollectionConfiguration` to payment sheet for collecting addresses.
+- Sync with Stripe [0.27](https://github.com/stripe/stripe-react-native/releases/tag/v0.27.0).
+
+**Fixes**
+- Make project compatible with Android gradle plugin 8.0.
+- New google pay button assets in order to comply with Google's new branding guidelines.
+- #1219 use correct value for enum PaymentConfirmationRedirect.ifRequired.
+- Add setting to render the cardfield using the standard AndroidView instead as alternative to the default ExpensiveAndroid view.
 
 ## 9.1.0
 This release brings a lot of improvments to the web plugin, like later payments using SetupIntents or using tokens. 

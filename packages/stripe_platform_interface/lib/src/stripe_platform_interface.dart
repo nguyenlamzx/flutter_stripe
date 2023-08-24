@@ -53,10 +53,10 @@ abstract class StripePlatform extends PlatformInterface {
   Future<bool> isApplePaySupported() async => false;
 
   /// Configure the payment sheet using [SetupPaymentSheetParameters] as config.
-  Future<void> initPaymentSheet(SetupPaymentSheetParameters params);
+  Future<PaymentSheetPaymentOption?> initPaymentSheet(SetupPaymentSheetParameters params);
 
   /// Display the payment sheet.
-  Future<void> presentPaymentSheet({
+  Future<PaymentSheetPaymentOption?> presentPaymentSheet({
     PaymentSheetPresentOptions? options,
   });
 
@@ -130,6 +130,7 @@ abstract class StripePlatform extends PlatformInterface {
     PaymentMethodOptions? options,
   );
   Future<PaymentIntent> retrievePaymentIntent(String clientSecret);
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret);
   Future<String> createTokenForCVCUpdate(String cvc);
 
   /// Methods related to ACH payments

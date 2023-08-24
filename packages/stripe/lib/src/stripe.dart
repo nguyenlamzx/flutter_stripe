@@ -331,6 +331,19 @@ class Stripe {
     }
   }
 
+  /// Retrieves a [SetupIntent] using the provided [clientSecret].
+  ///
+  /// Throws a [StripeException] in case retrieving the intent fails.
+  Future<SetupIntent> retrieveSetupIntent(String clientSecret) async {
+    await _awaitForSettings();
+    try {
+      final setupIntent = await _platform.retrieveSetupIntent(clientSecret);
+      return setupIntent;
+    } on StripeError catch (error) {
+      throw StripeError(message: error.message, code: error.message);
+    }
+  }
+
   /// Opens the UI to set up credit cards for Apple Pay.
   Future<void> openApplePaySetup() async {
     await _platform.openApplePaySetup();
@@ -483,7 +496,7 @@ class Stripe {
   ///
   /// See [SetupPaymentSheetParameters] for more info. In order to show the
   /// payment sheet it is required to call [presentPaymentSheet].
-  Future<void> initPaymentSheet({
+  Future<PaymentSheetPaymentOption?> initPaymentSheet({
     required SetupPaymentSheetParameters paymentSheetParameters,
   }) async {
     assert(
@@ -491,7 +504,7 @@ class Stripe {
             instance._merchantIdentifier == null),
         'merchantIdentifier must be specified if you are using Apple Pay. Please refer to this article to get a merchant identifier: https://support.stripe.com/questions/enable-apple-pay-on-your-stripe-account');
     await _awaitForSettings();
-    await _platform.initPaymentSheet(paymentSheetParameters);
+    return _platform.initPaymentSheet(paymentSheetParameters);
   }
 
   /// Displays the paymentsheet
@@ -499,7 +512,7 @@ class Stripe {
   /// See [PresentPaymentSheetPameters] for more details
   ///
   /// throws [StripeException] in case of a failure
-  Future<void> presentPaymentSheet({
+  Future<PaymentSheetPaymentOption?> presentPaymentSheet({
     PaymentSheetPresentOptions? options,
   }) async {
     await _awaitForSettings();
@@ -508,7 +521,7 @@ class Stripe {
 
   /// Call this method when the user logs out from your app.
   ///
-  /// This will ensur ethat any persisted authentication state in the
+  /// This will ensure that any persisted authentication state in the
   /// paymentsheet, such as authentication cookies are cleared during logout.
   Future<void> resetPaymentSheetCustomer() async {
     await _awaitForSettings();

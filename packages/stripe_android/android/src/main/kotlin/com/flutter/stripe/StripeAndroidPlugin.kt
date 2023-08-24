@@ -111,13 +111,17 @@ If you continue to have trouble, follow this discussion to get some support http
             )
             "confirmPayment" -> stripeSdk.confirmPayment(
                 paymentIntentClientSecret = call.requiredArgument("paymentIntentClientSecret"),
-                params = call.requiredArgument("params"),
+                params = call.optionalArgument("params"),
                 options = call.requiredArgument("options"),
                 promise = Promise(result)
             )
             "retrievePaymentIntent" -> stripeSdk.retrievePaymentIntent(
                 clientSecret = call.requiredArgument("clientSecret"),
                 promise = Promise(result)
+            )
+            "retrieveSetupIntent" -> stripeSdk.retrieveSetupIntent(
+                    clientSecret = call.requiredArgument("clientSecret"),
+                    promise = Promise(result)
             )
             "initPaymentSheet" -> stripeSdk.initPaymentSheet(
                 params = call.requiredArgument("params"),
@@ -238,10 +242,13 @@ If you continue to have trouble, follow this discussion to get some support http
 }
 
 private inline fun <reified T> MethodCall.optionalArgument(key: String): T? {
+    val value = argument<T>(key)
+    if (value == JSONObject.NULL)
+        return null
     if (T::class.java == ReadableMap::class.java) {
         return ReadableMap(argument<JSONObject>(key) ?: JSONObject()) as T
     }
-    return argument<T>(key)
+    return value
 }
 
 private inline fun <reified T> MethodCall.requiredArgument(key: String): T {

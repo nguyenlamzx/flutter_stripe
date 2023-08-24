@@ -87,6 +87,11 @@ mixin _$SetupPaymentSheetParameters {
   /// Return URL is required for IDEAL and few other payment methods
   String? get returnURL => throw _privateConstructorUsedError;
 
+  /// Configuration for how billing details are collected during checkout.
+  BillingDetailsCollectionConfiguration?
+      get billingDetailsCollectionConfiguration =>
+          throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $SetupPaymentSheetParametersCopyWith<SetupPaymentSheetParameters>
@@ -115,12 +120,16 @@ abstract class $SetupPaymentSheetParametersCopyWith<$Res> {
       bool allowsDelayedPaymentMethods,
       PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
-      String? returnURL});
+      String? returnURL,
+      BillingDetailsCollectionConfiguration?
+          billingDetailsCollectionConfiguration});
 
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
   $PaymentSheetGooglePayCopyWith<$Res>? get googlePay;
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
+  $BillingDetailsCollectionConfigurationCopyWith<$Res>?
+      get billingDetailsCollectionConfiguration;
 }
 
 /// @nodoc
@@ -151,6 +160,7 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
     Object? appearance = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
+    Object? billingDetailsCollectionConfiguration = freezed,
   }) {
     return _then(_value.copyWith(
       customFlow: null == customFlow
@@ -209,6 +219,11 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
           ? _value.returnURL
           : returnURL // ignore: cast_nullable_to_non_nullable
               as String?,
+      billingDetailsCollectionConfiguration: freezed ==
+              billingDetailsCollectionConfiguration
+          ? _value.billingDetailsCollectionConfiguration
+          : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
+              as BillingDetailsCollectionConfiguration?,
     ) as $Val);
   }
 
@@ -259,6 +274,21 @@ class _$SetupPaymentSheetParametersCopyWithImpl<$Res,
       return _then(_value.copyWith(billingDetails: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BillingDetailsCollectionConfigurationCopyWith<$Res>?
+      get billingDetailsCollectionConfiguration {
+    if (_value.billingDetailsCollectionConfiguration == null) {
+      return null;
+    }
+
+    return $BillingDetailsCollectionConfigurationCopyWith<$Res>(
+        _value.billingDetailsCollectionConfiguration!, (value) {
+      return _then(_value.copyWith(billingDetailsCollectionConfiguration: value)
+          as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -283,7 +313,9 @@ abstract class _$$_SetupParametersCopyWith<$Res>
       bool allowsDelayedPaymentMethods,
       PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails') BillingDetails? billingDetails,
-      String? returnURL});
+      String? returnURL,
+      BillingDetailsCollectionConfiguration?
+          billingDetailsCollectionConfiguration});
 
   @override
   $PaymentSheetApplePayCopyWith<$Res>? get applePay;
@@ -293,6 +325,9 @@ abstract class _$$_SetupParametersCopyWith<$Res>
   $PaymentSheetAppearanceCopyWith<$Res>? get appearance;
   @override
   $BillingDetailsCopyWith<$Res>? get billingDetails;
+  @override
+  $BillingDetailsCollectionConfigurationCopyWith<$Res>?
+      get billingDetailsCollectionConfiguration;
 }
 
 /// @nodoc
@@ -320,6 +355,7 @@ class __$$_SetupParametersCopyWithImpl<$Res>
     Object? appearance = freezed,
     Object? billingDetails = freezed,
     Object? returnURL = freezed,
+    Object? billingDetailsCollectionConfiguration = freezed,
   }) {
     return _then(_$_SetupParameters(
       customFlow: null == customFlow
@@ -378,6 +414,11 @@ class __$$_SetupParametersCopyWithImpl<$Res>
           ? _value.returnURL
           : returnURL // ignore: cast_nullable_to_non_nullable
               as String?,
+      billingDetailsCollectionConfiguration: freezed ==
+              billingDetailsCollectionConfiguration
+          ? _value.billingDetailsCollectionConfiguration
+          : billingDetailsCollectionConfiguration // ignore: cast_nullable_to_non_nullable
+              as BillingDetailsCollectionConfiguration?,
     ));
   }
 }
@@ -400,7 +441,8 @@ class _$_SetupParameters implements _SetupParameters {
       this.allowsDelayedPaymentMethods = false,
       this.appearance,
       @JsonKey(name: 'defaultBillingDetails') this.billingDetails,
-      this.returnURL});
+      this.returnURL,
+      this.billingDetailsCollectionConfiguration});
 
   factory _$_SetupParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SetupParametersFromJson(json);
@@ -487,9 +529,14 @@ class _$_SetupParameters implements _SetupParameters {
   @override
   final String? returnURL;
 
+  /// Configuration for how billing details are collected during checkout.
+  @override
+  final BillingDetailsCollectionConfiguration?
+      billingDetailsCollectionConfiguration;
+
   @override
   String toString() {
-    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL)';
+    return 'SetupPaymentSheetParameters(customFlow: $customFlow, customerId: $customerId, primaryButtonLabel: $primaryButtonLabel, customerEphemeralKeySecret: $customerEphemeralKeySecret, paymentIntentClientSecret: $paymentIntentClientSecret, setupIntentClientSecret: $setupIntentClientSecret, merchantDisplayName: $merchantDisplayName, applePay: $applePay, style: $style, googlePay: $googlePay, allowsDelayedPaymentMethods: $allowsDelayedPaymentMethods, appearance: $appearance, billingDetails: $billingDetails, returnURL: $returnURL, billingDetailsCollectionConfiguration: $billingDetailsCollectionConfiguration)';
   }
 
   @override
@@ -503,12 +550,10 @@ class _$_SetupParameters implements _SetupParameters {
                 other.customerId == customerId) &&
             (identical(other.primaryButtonLabel, primaryButtonLabel) ||
                 other.primaryButtonLabel == primaryButtonLabel) &&
-            (identical(other.customerEphemeralKeySecret,
-                    customerEphemeralKeySecret) ||
+            (identical(other.customerEphemeralKeySecret, customerEphemeralKeySecret) ||
                 other.customerEphemeralKeySecret ==
                     customerEphemeralKeySecret) &&
-            (identical(other.paymentIntentClientSecret,
-                    paymentIntentClientSecret) ||
+            (identical(other.paymentIntentClientSecret, paymentIntentClientSecret) ||
                 other.paymentIntentClientSecret == paymentIntentClientSecret) &&
             (identical(
                     other.setupIntentClientSecret, setupIntentClientSecret) ||
@@ -529,7 +574,11 @@ class _$_SetupParameters implements _SetupParameters {
             (identical(other.billingDetails, billingDetails) ||
                 other.billingDetails == billingDetails) &&
             (identical(other.returnURL, returnURL) ||
-                other.returnURL == returnURL));
+                other.returnURL == returnURL) &&
+            (identical(other.billingDetailsCollectionConfiguration,
+                    billingDetailsCollectionConfiguration) ||
+                other.billingDetailsCollectionConfiguration ==
+                    billingDetailsCollectionConfiguration));
   }
 
   @JsonKey(ignore: true)
@@ -549,7 +598,8 @@ class _$_SetupParameters implements _SetupParameters {
       allowsDelayedPaymentMethods,
       appearance,
       billingDetails,
-      returnURL);
+      returnURL,
+      billingDetailsCollectionConfiguration);
 
   @JsonKey(ignore: true)
   @override
@@ -582,7 +632,9 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
       final PaymentSheetAppearance? appearance,
       @JsonKey(name: 'defaultBillingDetails')
           final BillingDetails? billingDetails,
-      final String? returnURL}) = _$_SetupParameters;
+      final String? returnURL,
+      final BillingDetailsCollectionConfiguration?
+          billingDetailsCollectionConfiguration}) = _$_SetupParameters;
 
   factory _SetupParameters.fromJson(Map<String, dynamic> json) =
       _$_SetupParameters.fromJson;
@@ -668,6 +720,11 @@ abstract class _SetupParameters implements SetupPaymentSheetParameters {
   /// Return URL is required for IDEAL and few other payment methods
   String? get returnURL;
   @override
+
+  /// Configuration for how billing details are collected during checkout.
+  BillingDetailsCollectionConfiguration?
+      get billingDetailsCollectionConfiguration;
+  @override
   @JsonKey(ignore: true)
   _$$_SetupParametersCopyWith<_$_SetupParameters> get copyWith =>
       throw _privateConstructorUsedError;
@@ -697,7 +754,7 @@ mixin _$PaymentSheetApplePay {
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   OnOrderTracking? get setOrderTracking => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -717,7 +774,8 @@ abstract class $PaymentSheetApplePayCopyWith<$Res> {
       List<ApplePayCartSummaryItem>? cartItems,
       PlatformButtonType? buttonType,
       PaymentRequestType? request,
-      @JsonKey(ignore: true) OnOrderTracking? setOrderTracking});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          OnOrderTracking? setOrderTracking});
 
   $PaymentRequestTypeCopyWith<$Res>? get request;
 }
@@ -792,7 +850,8 @@ abstract class _$$_PaymentSheetApplePayCopyWith<$Res>
       List<ApplePayCartSummaryItem>? cartItems,
       PlatformButtonType? buttonType,
       PaymentRequestType? request,
-      @JsonKey(ignore: true) OnOrderTracking? setOrderTracking});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          OnOrderTracking? setOrderTracking});
 
   @override
   $PaymentRequestTypeCopyWith<$Res>? get request;
@@ -849,7 +908,8 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
       final List<ApplePayCartSummaryItem>? cartItems,
       this.buttonType,
       this.request,
-      @JsonKey(ignore: true) this.setOrderTracking})
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          this.setOrderTracking})
       : _cartItems = cartItems;
 
   factory _$_PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
@@ -887,7 +947,7 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final OnOrderTracking? setOrderTracking;
 
   @override
@@ -938,12 +998,12 @@ class _$_PaymentSheetApplePay implements _PaymentSheetApplePay {
 
 abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   const factory _PaymentSheetApplePay(
-          {required final String merchantCountryCode,
-          final List<ApplePayCartSummaryItem>? cartItems,
-          final PlatformButtonType? buttonType,
-          final PaymentRequestType? request,
-          @JsonKey(ignore: true) final OnOrderTracking? setOrderTracking}) =
-      _$_PaymentSheetApplePay;
+      {required final String merchantCountryCode,
+      final List<ApplePayCartSummaryItem>? cartItems,
+      final PlatformButtonType? buttonType,
+      final PaymentRequestType? request,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+          final OnOrderTracking? setOrderTracking}) = _$_PaymentSheetApplePay;
 
   factory _PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =
       _$_PaymentSheetApplePay.fromJson;
@@ -971,7 +1031,7 @@ abstract class _PaymentSheetApplePay implements PaymentSheetApplePay {
   /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
   /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
   /// function, or else the Apple Pay sheet will hang.
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   OnOrderTracking? get setOrderTracking;
   @override
   @JsonKey(ignore: true)
@@ -3739,7 +3799,8 @@ class __$$_PaymentSheetPresentOptionsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_PaymentSheetPresentOptions implements _PaymentSheetPresentOptions {
   const _$_PaymentSheetPresentOptions({this.timeout});
 
@@ -3803,5 +3864,476 @@ abstract class _PaymentSheetPresentOptions
   @override
   @JsonKey(ignore: true)
   _$$_PaymentSheetPresentOptionsCopyWith<_$_PaymentSheetPresentOptions>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+PaymentSheetPaymentOption _$PaymentSheetPaymentOptionFromJson(
+    Map<String, dynamic> json) {
+  return _PaymentSheetPaymentOption.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentSheetPaymentOption {
+  /// The label of the payment option
+  String get label => throw _privateConstructorUsedError;
+
+  /// String decoding of the image
+  String get image => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentSheetPaymentOptionCopyWith<PaymentSheetPaymentOption> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentSheetPaymentOptionCopyWith<$Res> {
+  factory $PaymentSheetPaymentOptionCopyWith(PaymentSheetPaymentOption value,
+          $Res Function(PaymentSheetPaymentOption) then) =
+      _$PaymentSheetPaymentOptionCopyWithImpl<$Res, PaymentSheetPaymentOption>;
+  @useResult
+  $Res call({String label, String image});
+}
+
+/// @nodoc
+class _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
+        $Val extends PaymentSheetPaymentOption>
+    implements $PaymentSheetPaymentOptionCopyWith<$Res> {
+  _$PaymentSheetPaymentOptionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? label = null,
+    Object? image = null,
+  }) {
+    return _then(_value.copyWith(
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PaymentSheetPaymentOptionCopyWith<$Res>
+    implements $PaymentSheetPaymentOptionCopyWith<$Res> {
+  factory _$$_PaymentSheetPaymentOptionCopyWith(
+          _$_PaymentSheetPaymentOption value,
+          $Res Function(_$_PaymentSheetPaymentOption) then) =
+      __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String label, String image});
+}
+
+/// @nodoc
+class __$$_PaymentSheetPaymentOptionCopyWithImpl<$Res>
+    extends _$PaymentSheetPaymentOptionCopyWithImpl<$Res,
+        _$_PaymentSheetPaymentOption>
+    implements _$$_PaymentSheetPaymentOptionCopyWith<$Res> {
+  __$$_PaymentSheetPaymentOptionCopyWithImpl(
+      _$_PaymentSheetPaymentOption _value,
+      $Res Function(_$_PaymentSheetPaymentOption) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? label = null,
+    Object? image = null,
+  }) {
+    return _then(_$_PaymentSheetPaymentOption(
+      label: null == label
+          ? _value.label
+          : label // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_PaymentSheetPaymentOption implements _PaymentSheetPaymentOption {
+  const _$_PaymentSheetPaymentOption(
+      {required this.label, required this.image});
+
+  factory _$_PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
+      _$$_PaymentSheetPaymentOptionFromJson(json);
+
+  /// The label of the payment option
+  @override
+  final String label;
+
+  /// String decoding of the image
+  @override
+  final String image;
+
+  @override
+  String toString() {
+    return 'PaymentSheetPaymentOption(label: $label, image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PaymentSheetPaymentOption &&
+            (identical(other.label, label) || other.label == label) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, label, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
+      get copyWith => __$$_PaymentSheetPaymentOptionCopyWithImpl<
+          _$_PaymentSheetPaymentOption>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PaymentSheetPaymentOptionToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentSheetPaymentOption implements PaymentSheetPaymentOption {
+  const factory _PaymentSheetPaymentOption(
+      {required final String label,
+      required final String image}) = _$_PaymentSheetPaymentOption;
+
+  factory _PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =
+      _$_PaymentSheetPaymentOption.fromJson;
+
+  @override
+
+  /// The label of the payment option
+  String get label;
+  @override
+
+  /// String decoding of the image
+  String get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PaymentSheetPaymentOptionCopyWith<_$_PaymentSheetPaymentOption>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+BillingDetailsCollectionConfiguration
+    _$BillingDetailsCollectionConfigurationFromJson(Map<String, dynamic> json) {
+  return _BillingDetailsCollectionConfiguration.fromJson(json);
+}
+
+/// @nodoc
+mixin _$BillingDetailsCollectionConfiguration {
+  /// How to collect the name field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get name => throw _privateConstructorUsedError;
+
+  /// How to collect the phone field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get phone => throw _privateConstructorUsedError;
+
+  /// How to collect the email field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get email => throw _privateConstructorUsedError;
+
+  /// How to collect the billing address.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  AddressCollectionMode? get address => throw _privateConstructorUsedError;
+
+  /// Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form.
+  ///
+  /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
+  bool? get attachDefaultsToPaymentMethod => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $BillingDetailsCollectionConfigurationCopyWith<
+          BillingDetailsCollectionConfiguration>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BillingDetailsCollectionConfigurationCopyWith<$Res> {
+  factory $BillingDetailsCollectionConfigurationCopyWith(
+          BillingDetailsCollectionConfiguration value,
+          $Res Function(BillingDetailsCollectionConfiguration) then) =
+      _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
+          BillingDetailsCollectionConfiguration>;
+  @useResult
+  $Res call(
+      {CollectionMode? name,
+      CollectionMode? phone,
+      CollectionMode? email,
+      AddressCollectionMode? address,
+      bool? attachDefaultsToPaymentMethod});
+}
+
+/// @nodoc
+class _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
+        $Val extends BillingDetailsCollectionConfiguration>
+    implements $BillingDetailsCollectionConfigurationCopyWith<$Res> {
+  _$BillingDetailsCollectionConfigurationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? phone = freezed,
+    Object? email = freezed,
+    Object? address = freezed,
+    Object? attachDefaultsToPaymentMethod = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as AddressCollectionMode?,
+      attachDefaultsToPaymentMethod: freezed == attachDefaultsToPaymentMethod
+          ? _value.attachDefaultsToPaymentMethod
+          : attachDefaultsToPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_BillingDetailsCollectionConfigurationCopyWith<$Res>
+    implements $BillingDetailsCollectionConfigurationCopyWith<$Res> {
+  factory _$$_BillingDetailsCollectionConfigurationCopyWith(
+          _$_BillingDetailsCollectionConfiguration value,
+          $Res Function(_$_BillingDetailsCollectionConfiguration) then) =
+      __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {CollectionMode? name,
+      CollectionMode? phone,
+      CollectionMode? email,
+      AddressCollectionMode? address,
+      bool? attachDefaultsToPaymentMethod});
+}
+
+/// @nodoc
+class __$$_BillingDetailsCollectionConfigurationCopyWithImpl<$Res>
+    extends _$BillingDetailsCollectionConfigurationCopyWithImpl<$Res,
+        _$_BillingDetailsCollectionConfiguration>
+    implements _$$_BillingDetailsCollectionConfigurationCopyWith<$Res> {
+  __$$_BillingDetailsCollectionConfigurationCopyWithImpl(
+      _$_BillingDetailsCollectionConfiguration _value,
+      $Res Function(_$_BillingDetailsCollectionConfiguration) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? phone = freezed,
+    Object? email = freezed,
+    Object? address = freezed,
+    Object? attachDefaultsToPaymentMethod = freezed,
+  }) {
+    return _then(_$_BillingDetailsCollectionConfiguration(
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as CollectionMode?,
+      address: freezed == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as AddressCollectionMode?,
+      attachDefaultsToPaymentMethod: freezed == attachDefaultsToPaymentMethod
+          ? _value.attachDefaultsToPaymentMethod
+          : attachDefaultsToPaymentMethod // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$_BillingDetailsCollectionConfiguration
+    implements _BillingDetailsCollectionConfiguration {
+  const _$_BillingDetailsCollectionConfiguration(
+      {this.name,
+      this.phone,
+      this.email,
+      this.address,
+      this.attachDefaultsToPaymentMethod});
+
+  factory _$_BillingDetailsCollectionConfiguration.fromJson(
+          Map<String, dynamic> json) =>
+      _$$_BillingDetailsCollectionConfigurationFromJson(json);
+
+  /// How to collect the name field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  @override
+  final CollectionMode? name;
+
+  /// How to collect the phone field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  @override
+  final CollectionMode? phone;
+
+  /// How to collect the email field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  @override
+  final CollectionMode? email;
+
+  /// How to collect the billing address.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  @override
+  final AddressCollectionMode? address;
+
+  /// Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form.
+  ///
+  /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
+  @override
+  final bool? attachDefaultsToPaymentMethod;
+
+  @override
+  String toString() {
+    return 'BillingDetailsCollectionConfiguration(name: $name, phone: $phone, email: $email, address: $address, attachDefaultsToPaymentMethod: $attachDefaultsToPaymentMethod)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BillingDetailsCollectionConfiguration &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.attachDefaultsToPaymentMethod,
+                    attachDefaultsToPaymentMethod) ||
+                other.attachDefaultsToPaymentMethod ==
+                    attachDefaultsToPaymentMethod));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, name, phone, email, address, attachDefaultsToPaymentMethod);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_BillingDetailsCollectionConfigurationCopyWith<
+          _$_BillingDetailsCollectionConfiguration>
+      get copyWith => __$$_BillingDetailsCollectionConfigurationCopyWithImpl<
+          _$_BillingDetailsCollectionConfiguration>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_BillingDetailsCollectionConfigurationToJson(
+      this,
+    );
+  }
+}
+
+abstract class _BillingDetailsCollectionConfiguration
+    implements BillingDetailsCollectionConfiguration {
+  const factory _BillingDetailsCollectionConfiguration(
+          {final CollectionMode? name,
+          final CollectionMode? phone,
+          final CollectionMode? email,
+          final AddressCollectionMode? address,
+          final bool? attachDefaultsToPaymentMethod}) =
+      _$_BillingDetailsCollectionConfiguration;
+
+  factory _BillingDetailsCollectionConfiguration.fromJson(
+          Map<String, dynamic> json) =
+      _$_BillingDetailsCollectionConfiguration.fromJson;
+
+  @override
+
+  /// How to collect the name field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get name;
+  @override
+
+  /// How to collect the phone field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get phone;
+  @override
+
+  /// How to collect the email field.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  CollectionMode? get email;
+  @override
+
+  /// How to collect the billing address.
+  ///
+  /// Defaults to `CollectionMode.automatic`.
+  AddressCollectionMode? get address;
+  @override
+
+  /// Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form.
+  ///
+  /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
+  bool? get attachDefaultsToPaymentMethod;
+  @override
+  @JsonKey(ignore: true)
+  _$$_BillingDetailsCollectionConfigurationCopyWith<
+          _$_BillingDetailsCollectionConfiguration>
       get copyWith => throw _privateConstructorUsedError;
 }

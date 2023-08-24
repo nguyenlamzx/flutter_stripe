@@ -19,7 +19,7 @@ class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
     /// the PaymentMethod will be attached to the customer when the
     /// PaymentIntent transitions to processing.
     @JsonKey(name: "setup_future_usage")
-        PaymentIntentSetupFutureUsage? setupFutureUsage,
+    PaymentIntentSetupFutureUsage? setupFutureUsage,
   }) = _ConfirmSepaDebitPaymentData;
 
   factory ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =>
@@ -47,7 +47,7 @@ class SepaDebitPaymentMethodDetails
     @JsonKey(name: "sepa_debit") @ElementConverter() required Element sepaDebit,
 
     /// The customer's billing_details. name and email are required.
-    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
+    @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails,
   }) = _SepaDebitPaymentMethodDetails;
 
   /// If you already know the customer’s bank or want to collect it yourself,
@@ -60,7 +60,7 @@ class SepaDebitPaymentMethodDetails
     @JsonKey(name: "sepa_debit") required SepaDebitIbanData sepaDebit,
 
     /// The customer's billing_details. name and email are required.
-    @JsonKey(name: "billing_details") BillingDetails? billingDetails,
+    @JsonKey(name: "billing_details") SepaBillingDetails? billingDetails,
   }) = _SepaDebitPaymentMethodDetailsWithIban;
 
   factory SepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>

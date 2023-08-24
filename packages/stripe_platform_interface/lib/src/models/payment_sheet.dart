@@ -77,6 +77,10 @@ class SetupPaymentSheetParameters with _$SetupPaymentSheetParameters {
 
     /// Return URL is required for IDEAL and few other payment methods
     String? returnURL,
+
+    /// Configuration for how billing details are collected during checkout.
+    BillingDetailsCollectionConfiguration?
+        billingDetailsCollectionConfiguration,
   }) = _SetupParameters;
 
   factory SetupPaymentSheetParameters.fromJson(Map<String, dynamic> json) =>
@@ -105,7 +109,8 @@ class PaymentSheetApplePay with _$PaymentSheetApplePay {
     /// ability to track and manage their purchases in Wallet. Stripe calls your implementation after the
     /// payment is complete, but before iOS dismisses the Apple Pay sheet. You must call the `completion`
     /// function, or else the Apple Pay sheet will hang.
-    @JsonKey(ignore: true) OnOrderTracking? setOrderTracking,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    OnOrderTracking? setOrderTracking,
   }) = _PaymentSheetApplePay;
 
   factory PaymentSheetApplePay.fromJson(Map<String, dynamic> json) =>
@@ -158,41 +163,41 @@ class PaymentSheetAppearanceColors with _$PaymentSheetAppearanceColors {
     ///
     /// Make sure there is enough contrast with [background].
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? primary,
+    Color? primary,
 
     /// Background color of the payment sheet.
     ///
     /// Make sure there is enough contrast with [primary].
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? background,
+    Color? background,
 
     /// Background color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentBackground,
+    Color? componentBackground,
 
     ///  Border color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentBorder,
+    Color? componentBorder,
 
     ///  Divider color of the payment sheet components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentDivider,
+    Color? componentDivider,
 
     /// Color of the entered text in the payment components.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? componentText,
+    Color? componentText,
 
     /// Primary text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? primaryText,
+    Color? primaryText,
 
     /// Secondary text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? secondaryText,
+    Color? secondaryText,
 
     /// Place holder text color.
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? placeholderText,
+    Color? placeholderText,
 
     /// Color of the displayed icons
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? icon,
@@ -315,14 +320,14 @@ class PaymentSheetPrimaryButtonThemeColors
   const factory PaymentSheetPrimaryButtonThemeColors({
     /// Primary button background color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? background,
+    Color? background,
 
     /// Primary button text color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson) Color? text,
 
     /// Primary button border color
     @JsonKey(toJson: ColorKey.toJson, fromJson: ColorKey.fromJson)
-        Color? border,
+    Color? border,
   }) = _PaymentSheetPrimaryButtonThemeColors;
 
   factory PaymentSheetPrimaryButtonThemeColors.fromJson(
@@ -374,6 +379,7 @@ class PresentPaymentSheetParameters with _$PresentPaymentSheetParameters {
 
 @freezed
 class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
+  @JsonSerializable(explicitToJson: true)
   const factory PaymentSheetPresentOptions({
     /// The number of milliseconds (after presenting) before the Payment Sheet
     /// closes automatically.
@@ -384,4 +390,83 @@ class PaymentSheetPresentOptions with _$PaymentSheetPresentOptions {
 
   factory PaymentSheetPresentOptions.fromJson(Map<String, dynamic> json) =>
       _$PaymentSheetPresentOptionsFromJson(json);
+}
+
+@freezed
+class PaymentSheetPaymentOption with _$PaymentSheetPaymentOption {
+  @JsonSerializable(explicitToJson: true)
+  const factory PaymentSheetPaymentOption({
+    /// The label of the payment option
+    required String label,
+
+    /// String decoding of the image
+    required String image,
+  }) = _PaymentSheetPaymentOption;
+
+  factory PaymentSheetPaymentOption.fromJson(Map<String, dynamic> json) =>
+      _$PaymentSheetPaymentOptionFromJson(json);
+}
+
+@freezed
+class BillingDetailsCollectionConfiguration
+    with _$BillingDetailsCollectionConfiguration {
+  @JsonSerializable(explicitToJson: true)
+  const factory BillingDetailsCollectionConfiguration({
+    /// How to collect the name field.
+    ///
+    /// Defaults to `CollectionMode.automatic`.
+    CollectionMode? name,
+
+    /// How to collect the phone field.
+    ///
+    /// Defaults to `CollectionMode.automatic`.
+    CollectionMode? phone,
+
+    /// How to collect the email field.
+    ///
+    /// Defaults to `CollectionMode.automatic`.
+    CollectionMode? email,
+
+    /// How to collect the billing address.
+    ///
+    /// Defaults to `CollectionMode.automatic`.
+    AddressCollectionMode? address,
+
+    /// Whether the values included in `Configuration.defaultBillingDetails` should be attached to the payment method, this includes fields that aren't displayed in the form.
+    ///
+    /// If `false` (the default), those values will only be used to prefill the corresponding fields in the form.
+    bool? attachDefaultsToPaymentMethod,
+  }) = _BillingDetailsCollectionConfiguration;
+
+  factory BillingDetailsCollectionConfiguration.fromJson(
+          Map<String, dynamic> json) =>
+      _$BillingDetailsCollectionConfigurationFromJson(json);
+}
+
+/// Types of how to collect non address fields
+enum CollectionMode {
+  /// The field may or may not be collected depending on the Payment Method's requirements.
+  automatic,
+
+  /// The field will never be collected.
+  ///
+  /// If this field is required by the Payment Method, you must provide it as part of `defaultBillingDetails`.
+  never,
+
+  /// The field will always be collected, even if it isn't required for the Payment Method.
+  always,
+}
+
+/// Types of how to collect the address.
+enum AddressCollectionMode {
+  /// Only the fields required by the Payment Method will be collected, which may be none.
+  automatic,
+
+  /// Billing address will never be collected.
+  ///
+  /// If the Payment Method requires a billing address, you must provide it as part of `defaultBillingDetails`.
+  never,
+
+  /// Collect the full billing address, regardless of the Payment Method's requirements. */
+  full,
 }

@@ -158,6 +158,9 @@ class Card with _$Card {
 
     /// The available networks the card can run.
     List<String>? availableNetworks,
+
+    /// Three 3ds usage data.
+    ThreeDSecureUsage? threeDSecureUsage,
   }) = _Card;
 
   factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
@@ -355,9 +358,9 @@ class PaymentMethodParams with _$PaymentMethodParams {
   }) = _PaymentMethodParamsAlipay;
 
   @JsonSerializable(explicitToJson: true)
-  @FreezedUnionValue('CashAppPay')
+  @FreezedUnionValue('CashApp')
 
-  /// Config parameters for Alipay card payment method.
+  /// Config parameters for cashapp payment method.
   const factory PaymentMethodParams.cashAppPay({
     /// Paymentmethod data for this paymentmethod.
     required PaymentMethodData paymentMethodData,
@@ -835,4 +838,18 @@ class MandateDataOnlineData with _$MandateDataOnlineData {
 
   factory MandateDataOnlineData.fromJson(Map<String, dynamic> json) =>
       _$MandateDataOnlineDataFromJson(json);
+}
+
+@freezed
+class ThreeDSecureUsage with _$ThreeDSecureUsage {
+  /// Data associated with the 3ds usage.
+
+  @JsonSerializable(explicitToJson: true)
+  const factory ThreeDSecureUsage({
+    /// Whether 3ds is supported or not.
+    bool? isSupported,
+  }) = _ThreeDSecureUsage;
+
+  factory ThreeDSecureUsage.fromJson(Map<String, dynamic> json) =>
+      _$ThreeDSecureUsageFromJson(json);
 }

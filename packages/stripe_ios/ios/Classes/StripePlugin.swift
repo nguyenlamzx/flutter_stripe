@@ -191,11 +191,18 @@ extension  StripePlugin {
     
     func presentPaymentSheet(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-              let options = arguments["options"] as? NSDictionary else {
+            let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
-        presentPaymentSheet(options: options, resolver: resolver(for: result), rejecter: rejecter(for: result))
+        presentPaymentSheet(options: options, resolver: { paymentResult in
+            if let resultList = paymentResult as? [Any] {
+                let resultMap: NSDictionary = [:]
+                result(resultMap)
+            } else {
+                result(paymentResult)
+            }
+        }, rejecter: rejecter(for: result))
     }
     
     func createTokenForCVCUpdate(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -378,12 +385,12 @@ extension  StripePlugin {
     
     func confirmPayment(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         guard let arguments = call.arguments as? FlutterMap,
-        let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
-        let params = arguments["params"] as? NSDictionary,
-        let options = arguments["options"] as? NSDictionary else {
+              let paymentIntentClientSecret = arguments["paymentIntentClientSecret"] as? String,
+              let options = arguments["options"] as? NSDictionary else {
             result(FlutterError.invalidParams)
             return
         }
+        let params = arguments["params"] as? NSDictionary
         confirmPayment(
             paymentIntentClientSecret: paymentIntentClientSecret,
             params: params,
@@ -485,7 +492,9 @@ extension  StripePlugin {
             return
         }
         
-        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: [], resolver: resolver(for: result), rejecter: rejecter(for: result))
+        let errors = params["errors"] as? [NSDictionary]
+        
+        updatePlatformPaySheet(summaryItems: summaryItems, shippingMethods: shippingMethods, errors: errors ?? [], resolver: resolver(for: result), rejecter: rejecter(for: result))
     }
     
     func isPlatformPaySupported(_ call: FlutterMethodCall, result: @escaping FlutterResult) {

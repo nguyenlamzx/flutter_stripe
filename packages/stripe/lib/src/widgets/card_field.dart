@@ -21,6 +21,7 @@ class CardField extends StatefulWidget {
     this.countryCode,
     this.style,
     this.autofocus = false,
+    this.disabled = false,
     this.dangerouslyGetFullCardDetails = false,
     this.dangerouslyUpdateFullCardDetails = false,
     this.cursorColor,
@@ -29,6 +30,8 @@ class CardField extends StatefulWidget {
     this.cvcHintText,
     this.postalCodeHintText,
     this.controller,
+    this.androidPlatformViewRenderType =
+        AndroidPlatformViewRenderType.expensiveAndroidView,
   }) : super(key: key);
 
   /// Decoration related to the input fields.
@@ -75,6 +78,11 @@ class CardField extends StatefulWidget {
   /// Default is `false`.
   final bool autofocus;
 
+  /// When true it applies a state that does not allow the user to interact with
+  /// the card form field.
+  /// Default is `false`.
+  final bool disabled;
+
   /// Controller that can be use to execute several operations on the cardfield
   /// e.g (clear).
   final CardEditController? controller;
@@ -95,6 +103,12 @@ class CardField extends StatefulWidget {
   //  'https://stripe.com/docs/security/guide#validating-pci-compliance'
   /// Default is `false`.
   final bool dangerouslyUpdateFullCardDetails;
+
+  /// Type of platformview used for rendering on Android.
+  ///
+  /// This is an advanced option and changing this should be tested on multiple android devices.
+  /// Defaults to [AndroidPlatformViewRenderType.expensiveAndroidView]
+  final AndroidPlatformViewRenderType androidPlatformViewRenderType;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -170,7 +184,10 @@ class _CardFieldState extends State<CardField> {
             delegate: const _NegativeMarginLayout(margin: platformMargin),
             child: _MethodChannelCardField(
               controller: controller,
+              disabled: widget.disabled,
               height: platformCardHeight,
+              androidPlatformViewRenderType:
+                  widget.androidPlatformViewRenderType,
               focusNode: _node,
               style: style,
               placeholder: placeholder,
@@ -258,11 +275,13 @@ class _MethodChannelCardField extends StatefulWidget {
   _MethodChannelCardField({
     this.onCardChanged,
     required this.controller,
+    required this.androidPlatformViewRenderType,
     Key? key,
     this.onFocus,
     this.style,
     this.placeholder,
     this.enablePostalCode = false,
+    this.disabled = false,
     this.countryCode,
     double? width,
     double? height = kCardFieldDefaultHeight,
@@ -287,9 +306,11 @@ class _MethodChannelCardField extends StatefulWidget {
   final String? countryCode;
   final FocusNode focusNode;
   final bool autofocus;
+  final bool disabled;
   final CardEditController controller;
   final bool dangerouslyGetFullCardDetails;
   final bool dangerouslyUpdateFullCardDetails;
+  final AndroidPlatformViewRenderType androidPlatformViewRenderType;
 
   // This is used in the platform side to register the view.
   static const _viewType = 'flutter.stripe/card_field';
@@ -383,6 +404,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
           controller.initalDetails != null)
         'cardDetails': controller.initalDetails?.toJson(),
       'autofocus': widget.autofocus,
+      'disabled': widget.disabled,
     };
 
     Widget platform;
@@ -392,6 +414,7 @@ class _MethodChannelCardFieldState extends State<_MethodChannelCardField>
         viewType: _MethodChannelCardField._viewType,
         creationParams: creationParams,
         onPlatformViewCreated: onPlatformViewCreated,
+        androidPlatformViewRenderType: widget.androidPlatformViewRenderType,
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       platform = Listener(
@@ -583,8 +606,10 @@ class _AndroidCardField extends StatelessWidget {
     required this.viewType,
     required this.creationParams,
     required this.onPlatformViewCreated,
+    required this.androidPlatformViewRenderType,
   }) : super(key: key);
 
+  final AndroidPlatformViewRenderType androidPlatformViewRenderType;
   final String viewType;
   final Map<String, dynamic> creationParams;
   final PlatformViewCreatedCallback onPlatformViewCreated;
@@ -602,18 +627,34 @@ class _AndroidCardField extends StatelessWidget {
       ),
       onCreatePlatformView: (params) {
         onPlatformViewCreated(params.id);
-        return PlatformViewsService.initExpensiveAndroidView(
-          id: params.id,
-          viewType: viewType,
-          layoutDirection: Directionality.of(context),
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-          onFocus: () {
-            params.onFocusChanged(true);
-          },
-        )
-          ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
-          ..create();
+        switch (androidPlatformViewRenderType) {
+          case AndroidPlatformViewRenderType.expensiveAndroidView:
+            return PlatformViewsService.initExpensiveAndroidView(
+              id: params.id,
+              viewType: viewType,
+              layoutDirection: Directionality.of(context),
+              creationParams: creationParams,
+              creationParamsCodec: const StandardMessageCodec(),
+              onFocus: () {
+                params.onFocusChanged(true);
+              },
+            )
+              ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..create();
+          case AndroidPlatformViewRenderType.androidView:
+            return PlatformViewsService.initAndroidView(
+              id: params.id,
+              viewType: viewType,
+              layoutDirection: Directionality.of(context),
+              creationParams: creationParams,
+              creationParamsCodec: const StandardMessageCodec(),
+              onFocus: () {
+                params.onFocusChanged(true);
+              },
+            )
+              ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+              ..create();
+        }
       },
     );
   }
@@ -646,3 +687,13 @@ const kCardFieldDefaultHeight = 48.0;
 const kCardFieldDefaultFontSize = 17;
 const kCardFieldDefaultTextColor = Colors.black;
 const kCardFieldDefaultFontFamily = 'Roboto';
+
+enum AndroidPlatformViewRenderType {
+  /// Controls an Android view that is composed using the Android view hierarchy
+  expensiveAndroidView,
+
+  /// Use an Android view composed using a GL texture.
+  ///
+  /// This is more efficient but has more issues on older Android devices.
+  androidView,
+}

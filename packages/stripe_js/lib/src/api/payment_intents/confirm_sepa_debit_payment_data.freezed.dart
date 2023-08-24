@@ -52,10 +52,9 @@ abstract class $ConfirmSepaDebitPaymentDataCopyWith<$Res> {
           ConfirmSepaDebitPaymentData>;
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          SepaDebitPaymentMethodDetails? paymentMethod,
+      {@paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage});
+      PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
@@ -113,10 +112,9 @@ abstract class _$$_ConfirmSepaDebitPaymentDataCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@paymentMethodDetailJsonKey
-          SepaDebitPaymentMethodDetails? paymentMethod,
+      {@paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
       @JsonKey(name: "setup_future_usage")
-          PaymentIntentSetupFutureUsage? setupFutureUsage});
+      PaymentIntentSetupFutureUsage? setupFutureUsage});
 
   @override
   $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
@@ -216,9 +214,9 @@ abstract class _ConfirmSepaDebitPaymentData
     implements ConfirmSepaDebitPaymentData {
   const factory _ConfirmSepaDebitPaymentData(
           {@paymentMethodDetailJsonKey
-              final SepaDebitPaymentMethodDetails? paymentMethod,
+          final SepaDebitPaymentMethodDetails? paymentMethod,
           @JsonKey(name: "setup_future_usage")
-              final PaymentIntentSetupFutureUsage? setupFutureUsage}) =
+          final PaymentIntentSetupFutureUsage? setupFutureUsage}) =
       _$_ConfirmSepaDebitPaymentData;
 
   factory _ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =
@@ -271,12 +269,14 @@ mixin _$SepaDebitPaymentMethodDetails {
   TResult when<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         withIban,
   }) =>
       throw _privateConstructorUsedError;
@@ -284,11 +284,14 @@ mixin _$SepaDebitPaymentMethodDetails {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult? Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
   }) =>
       throw _privateConstructorUsedError;
@@ -296,11 +299,14 @@ mixin _$SepaDebitPaymentMethodDetails {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) =>
@@ -433,12 +439,14 @@ class _$_IdSepaDebitPaymentMethodDetails
   TResult when<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         withIban,
   }) {
     return id(this.id);
@@ -449,11 +457,14 @@ class _$_IdSepaDebitPaymentMethodDetails
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult? Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
   }) {
     return id?.call(this.id);
@@ -464,11 +475,14 @@ class _$_IdSepaDebitPaymentMethodDetails
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -651,12 +665,14 @@ class _$_SepaDebitPaymentMethodDetails
   TResult when<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         withIban,
   }) {
     return $default(sepaDebit, billingDetails);
@@ -667,11 +683,14 @@ class _$_SepaDebitPaymentMethodDetails
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult? Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
   }) {
     return $default?.call(sepaDebit, billingDetails);
@@ -682,11 +701,14 @@ class _$_SepaDebitPaymentMethodDetails
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -744,9 +766,9 @@ abstract class _SepaDebitPaymentMethodDetails
   const factory _SepaDebitPaymentMethodDetails(
           {@JsonKey(name: "sepa_debit")
           @ElementConverter()
-              required final Element sepaDebit,
+          required final Element sepaDebit,
           @JsonKey(name: "billing_details")
-              final BillingDetails? billingDetails}) =
+          final SepaBillingDetails? billingDetails}) =
       _$_SepaDebitPaymentMethodDetails;
 
   factory _SepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =
@@ -889,12 +911,14 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   TResult when<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
             @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)
         withIban,
   }) {
     return withIban(sepaDebit, billingDetails);
@@ -905,11 +929,14 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult? Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
   }) {
     return withIban?.call(sepaDebit, billingDetails);
@@ -920,11 +947,14 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
             @JsonKey(name: "sepa_debit") @ElementConverter() Element sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
-            @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
+    TResult Function(
+            @JsonKey(name: "sepa_debit") SepaDebitIbanData sepaDebit,
+            @JsonKey(name: "billing_details")
+            SepaBillingDetails? billingDetails)?
         withIban,
     required TResult orElse(),
   }) {
@@ -980,11 +1010,10 @@ class _$_SepaDebitPaymentMethodDetailsWithIban
 abstract class _SepaDebitPaymentMethodDetailsWithIban
     implements SepaDebitPaymentMethodDetails {
   const factory _SepaDebitPaymentMethodDetailsWithIban(
-          {@JsonKey(name: "sepa_debit")
-              required final SepaDebitIbanData sepaDebit,
-          @JsonKey(name: "billing_details")
-              final BillingDetails? billingDetails}) =
-      _$_SepaDebitPaymentMethodDetailsWithIban;
+      {@JsonKey(name: "sepa_debit") required final SepaDebitIbanData sepaDebit,
+      @JsonKey(name: "billing_details")
+      final SepaBillingDetails?
+          billingDetails}) = _$_SepaDebitPaymentMethodDetailsWithIban;
 
   factory _SepaDebitPaymentMethodDetailsWithIban.fromJson(
           Map<String, dynamic> json) =
