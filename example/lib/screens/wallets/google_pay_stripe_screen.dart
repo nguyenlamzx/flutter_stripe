@@ -30,7 +30,7 @@ class _GooglePayStripeScreenState extends State<GooglePayStripeScreen> {
             clientSecret: clientSecret,
             confirmParams: PlatformPayConfirmParams.googlePay(
               googlePay: GooglePayParams(
-                amount: 30,
+                // amount: 30,
                 testEnv: true,
                 merchantName: 'Example Merchant Name',
                 merchantCountryCode: 'Es',

@@ -11,7 +11,7 @@ void main() {
         ConfirmSepaDebitPaymentData(
           paymentMethod: SepaDebitPaymentMethodDetails(
             sepaDebit: fakeElement,
-            billingDetails: SepaBillingDetails(
+            billingDetails: BillingDetails(
                 name: 'Jenny Rosen', email: 'jenny@example.com'),
           ),
         ).toJson(),
@@ -42,7 +42,7 @@ void main() {
         ConfirmSepaDebitPaymentData(
           paymentMethod: SepaDebitPaymentMethodDetails.withIban(
             sepaDebit: SepaDebitIbanData(iban: "IBAN"),
-            billingDetails: SepaBillingDetails(
+            billingDetails: BillingDetails(
               name: 'Jenny Rosen',
               email: 'jenny@example.com',
             ),

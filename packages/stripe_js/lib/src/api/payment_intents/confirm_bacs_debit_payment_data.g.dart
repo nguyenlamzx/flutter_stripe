@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'confirm_sepa_debit_payment_data.dart';
+part of 'confirm_bacs_debit_payment_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConfirmSepaDebitPaymentData _$$_ConfirmSepaDebitPaymentDataFromJson(
+_$_ConfirmBacsDebitPaymentData _$$_ConfirmBacsDebitPaymentDataFromJson(
         Map json) =>
-    _$_ConfirmSepaDebitPaymentData(
+    _$_ConfirmBacsDebitPaymentData(
       paymentMethod: json['payment_method'] == null
           ? null
-          : SepaDebitPaymentMethodDetails.fromJson(
+          : BacsDebitPaymentMethodDetails.fromJson(
               Map<String, dynamic>.from(json['payment_method'] as Map)),
       setupFutureUsage: $enumDecodeNullable(
           _$PaymentIntentSetupFutureUsageEnumMap, json['setup_future_usage']),
     );
 
-Map<String, dynamic> _$$_ConfirmSepaDebitPaymentDataToJson(
-    _$_ConfirmSepaDebitPaymentData instance) {
+Map<String, dynamic> _$$_ConfirmBacsDebitPaymentDataToJson(
+    _$_ConfirmBacsDebitPaymentData instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -39,24 +39,24 @@ const _$PaymentIntentSetupFutureUsageEnumMap = {
   PaymentIntentSetupFutureUsage.offSession: 'off_session',
 };
 
-_$_IdSepaDebitPaymentMethodDetails _$$_IdSepaDebitPaymentMethodDetailsFromJson(
+_$_IdBacsDebitPaymentMethodDetails _$$_IdBacsDebitPaymentMethodDetailsFromJson(
         Map json) =>
-    _$_IdSepaDebitPaymentMethodDetails(
+    _$_IdBacsDebitPaymentMethodDetails(
       json['id'] as String,
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_IdSepaDebitPaymentMethodDetailsToJson(
-        _$_IdSepaDebitPaymentMethodDetails instance) =>
+Map<String, dynamic> _$$_IdBacsDebitPaymentMethodDetailsToJson(
+        _$_IdBacsDebitPaymentMethodDetails instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.$type,
     };
 
-_$_SepaDebitPaymentMethodDetails _$$_SepaDebitPaymentMethodDetailsFromJson(
+_$_BacsDebitPaymentMethodDetails _$$_BacsDebitPaymentMethodDetailsFromJson(
         Map json) =>
-    _$_SepaDebitPaymentMethodDetails(
-      sepaDebit: const ElementConverter().fromJson(json['sepa_debit']),
+    _$_BacsDebitPaymentMethodDetails(
+      BacsDebit: const ElementConverter().fromJson(json['bacs_debit']),
       billingDetails: json['billing_details'] == null
           ? null
           : BillingDetails.fromJson(
@@ -64,8 +64,8 @@ _$_SepaDebitPaymentMethodDetails _$$_SepaDebitPaymentMethodDetailsFromJson(
       $type: json['type'] as String?,
     );
 
-Map<String, dynamic> _$$_SepaDebitPaymentMethodDetailsToJson(
-    _$_SepaDebitPaymentMethodDetails instance) {
+Map<String, dynamic> _$$_BacsDebitPaymentMethodDetailsToJson(
+    _$_BacsDebitPaymentMethodDetails instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -75,17 +75,17 @@ Map<String, dynamic> _$$_SepaDebitPaymentMethodDetailsToJson(
   }
 
   writeNotNull(
-      'sepa_debit', const ElementConverter().toJson(instance.sepaDebit));
+      'bacs_debit', const ElementConverter().toJson(instance.BacsDebit));
   writeNotNull('billing_details', instance.billingDetails?.toJson());
   val['type'] = instance.$type;
   return val;
 }
 
-_$_SepaDebitPaymentMethodDetailsWithIban
-    _$$_SepaDebitPaymentMethodDetailsWithIbanFromJson(Map json) =>
-        _$_SepaDebitPaymentMethodDetailsWithIban(
-          sepaDebit: SepaDebitIbanData.fromJson(
-              Map<String, dynamic>.from(json['sepa_debit'] as Map)),
+_$_BacsDebitPaymentMethodDetailsWithIban
+    _$$_BacsDebitPaymentMethodDetailsWithIbanFromJson(Map json) =>
+        _$_BacsDebitPaymentMethodDetailsWithIban(
+          bacsDebit: BacsDebitData.fromJson(
+              Map<String, dynamic>.from(json['bacs_debit'] as Map)),
           billingDetails: json['billing_details'] == null
               ? null
               : BillingDetails.fromJson(
@@ -93,10 +93,10 @@ _$_SepaDebitPaymentMethodDetailsWithIban
           $type: json['type'] as String?,
         );
 
-Map<String, dynamic> _$$_SepaDebitPaymentMethodDetailsWithIbanToJson(
-    _$_SepaDebitPaymentMethodDetailsWithIban instance) {
+Map<String, dynamic> _$$_BacsDebitPaymentMethodDetailsWithIbanToJson(
+    _$_BacsDebitPaymentMethodDetailsWithIban instance) {
   final val = <String, dynamic>{
-    'sepa_debit': instance.sepaDebit.toJson(),
+    'bacs_debit': instance.bacsDebit.toJson(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -110,19 +110,19 @@ Map<String, dynamic> _$$_SepaDebitPaymentMethodDetailsWithIbanToJson(
   return val;
 }
 
-_$_SepaDebitIbanData _$$_SepaDebitIbanDataFromJson(Map json) =>
-    _$_SepaDebitIbanData(
-      iban: json['iban'] as String,
+_$_BacsDebitData _$$_BacsDebitDataFromJson(Map json) => _$_BacsDebitData(
+      accountNumber: json['account_number'] as String,
+      sortCode: json['sort_code'] as String,
     );
 
-Map<String, dynamic> _$$_SepaDebitIbanDataToJson(
-        _$_SepaDebitIbanData instance) =>
+Map<String, dynamic> _$$_BacsDebitDataToJson(_$_BacsDebitData instance) =>
     <String, dynamic>{
-      'iban': instance.iban,
+      'account_number': instance.accountNumber,
+      'sort_code': instance.sortCode,
     };
 
-_$_SepaBillingDetails _$$_SepaBillingDetailsFromJson(Map json) =>
-    _$_SepaBillingDetails(
+_$_BacsBillingDetails _$$_BacsBillingDetailsFromJson(Map json) =>
+    _$_BacsBillingDetails(
       email: json['email'] as String,
       address: json['address'] == null
           ? null
@@ -132,8 +132,8 @@ _$_SepaBillingDetails _$$_SepaBillingDetailsFromJson(Map json) =>
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$$_SepaBillingDetailsToJson(
-    _$_SepaBillingDetails instance) {
+Map<String, dynamic> _$$_BacsBillingDetailsToJson(
+    _$_BacsBillingDetails instance) {
   final val = <String, dynamic>{
     'email': instance.email,
   };

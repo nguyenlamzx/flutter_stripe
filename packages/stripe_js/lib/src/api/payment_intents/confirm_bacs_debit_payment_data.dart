@@ -2,38 +2,38 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:stripe_js/src/api/converters/js_converter.dart';
 import 'package:stripe_js/stripe_api.dart';
 
-part 'confirm_sepa_debit_payment_data.freezed.dart';
-part 'confirm_sepa_debit_payment_data.g.dart';
+part 'confirm_bacs_debit_payment_data.freezed.dart';
+part 'confirm_bacs_debit_payment_data.g.dart';
 
 @freezed
-class ConfirmSepaDebitPaymentData with _$ConfirmSepaDebitPaymentData {
-  const factory ConfirmSepaDebitPaymentData({
+class ConfirmBacsDebitPaymentData with _$ConfirmBacsDebitPaymentData {
+  const factory ConfirmBacsDebitPaymentData({
     /// Either the id of an existing PaymentMethod, or an object containing
     /// data to create a PaymentMethod with.
     /// See the use case sections below for details.
-    @paymentMethodDetailJsonKey SepaDebitPaymentMethodDetails? paymentMethod,
+    @paymentMethodDetailJsonKey BacsDebitPaymentMethodDetails? paymentMethod,
 
-    /// To set up the SEPA Direct Debit account for reuse, set this parameter
-    /// to off_session. SEPA Direct Debit only accepts an off_session value
+    /// To set up the Bacs Direct Debit account for reuse, set this parameter
+    /// to off_session. Bacs Direct Debit only accepts an off_session value
     /// for this parameter. If a customer is provided on this PaymentIntent,
     /// the PaymentMethod will be attached to the customer when the
     /// PaymentIntent transitions to processing.
     @JsonKey(name: "setup_future_usage")
         PaymentIntentSetupFutureUsage? setupFutureUsage,
-  }) = _ConfirmSepaDebitPaymentData;
+  }) = _ConfirmBacsDebitPaymentData;
 
-  factory ConfirmSepaDebitPaymentData.fromJson(Map<String, dynamic> json) =>
-      _$ConfirmSepaDebitPaymentDataFromJson(json);
+  factory ConfirmBacsDebitPaymentData.fromJson(Map<String, dynamic> json) =>
+      _$ConfirmBacsDebitPaymentDataFromJson(json);
 }
 
 @Freezed(unionKey: 'type')
-class SepaDebitPaymentMethodDetails
-    with _$SepaDebitPaymentMethodDetails
+class BacsDebitPaymentMethodDetails
+    with _$BacsDebitPaymentMethodDetails
     implements PaymentMethodDetails {
-  @FreezedUnionValue('sepa_debit')
+  @FreezedUnionValue('bacs_debit')
   @Implements<IdPaymentMethodDetails>()
-  const factory SepaDebitPaymentMethodDetails.id(String id) =
-      _IdSepaDebitPaymentMethodDetails;
+  const factory BacsDebitPaymentMethodDetails.id(String id) =
+      _IdBacsDebitPaymentMethodDetails;
 
   /// Use stripe.confirmCardPayment with payment data from an Element by
   /// passing a card or cardNumber Element as payment_method[card] in the
@@ -41,47 +41,48 @@ class SepaDebitPaymentMethodDetails
   ///
   /// The new PaymentMethod will be created with data collected by the
   /// Element and will be used to confirm the PaymentIntent.
-  @FreezedUnionValue('sepa_debit')
-  const factory SepaDebitPaymentMethodDetails({
+  @FreezedUnionValue('bacs_debit')
+  const factory BacsDebitPaymentMethodDetails({
     /// Uses the provided card or cardNumber Element for confirmation.
-    @JsonKey(name: "sepa_debit") @ElementConverter() required Element sepaDebit,
+    @JsonKey(name: "bacs_debit") @ElementConverter() required Element BacsDebit,
 
     /// The customer's billing_details. name and email are required.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
-  }) = _SepaDebitPaymentMethodDetails;
+  }) = _BacsDebitPaymentMethodDetails;
 
   /// If you already know the customer’s bank or want to collect it yourself,
   /// then you do not need to use the idealBank Element.
   ///  You can pass in the customer’s bank code directly to create a new
   /// PaymentMethod and confirm the PaymentIntent.
-  @FreezedUnionValue('sepa_debit')
-  const factory SepaDebitPaymentMethodDetails.withIban({
+  @FreezedUnionValue('bacs_debit')
+  const factory BacsDebitPaymentMethodDetails.withValue({
     /// Uses the provided card or cardNumber Element for confirmation.
-    @JsonKey(name: "sepa_debit") required SepaDebitIbanData sepaDebit,
+    @JsonKey(name: "bacs_debit") required BacsDebitData bacsDebit,
 
     /// The customer's billing_details. name and email are required.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
-  }) = _SepaDebitPaymentMethodDetailsWithIban;
+  }) = _BacsDebitPaymentMethodDetailsWithIban;
 
-  factory SepaDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
-      _$SepaDebitPaymentMethodDetailsFromJson(json);
+  factory BacsDebitPaymentMethodDetails.fromJson(Map<String, dynamic> json) =>
+      _$BacsDebitPaymentMethodDetailsFromJson(json);
 }
 
 @freezed
-class SepaDebitIbanData with _$SepaDebitIbanData {
-  const factory SepaDebitIbanData({
+class BacsDebitData with _$BacsDebitData {
+  const factory BacsDebitData({
     /// An IBAN account number.
-    required String iban,
-  }) = _SepaDebitIbanData;
+    @JsonKey(name: "account_number") required String accountNumber,
+    @JsonKey(name: "sort_code") required String sortCode,
+  }) = _BacsDebitData;
 
-  factory SepaDebitIbanData.fromJson(Map<String, dynamic> json) =>
-      _$SepaDebitIbanDataFromJson(json);
+  factory BacsDebitData.fromJson(Map<String, dynamic> json) =>
+      _$BacsDebitDataFromJson(json);
 }
 
 /// Billing information associated with the payment method.
 @freezed
-class SepaBillingDetails with _$SepaBillingDetails {
-  const factory SepaBillingDetails({
+class BacsBillingDetails with _$BacsBillingDetails {
+  const factory BacsBillingDetails({
     /// Email address.
     required String email,
 
@@ -93,8 +94,8 @@ class SepaBillingDetails with _$SepaBillingDetails {
 
     /// Full name.
     required String name,
-  }) = _SepaBillingDetails;
+  }) = _BacsBillingDetails;
 
-  factory SepaBillingDetails.fromJson(Map<String, dynamic> json) =>
-      _$SepaBillingDetailsFromJson(json);
+  factory BacsBillingDetails.fromJson(Map<String, dynamic> json) =>
+      _$BacsBillingDetailsFromJson(json);
 }

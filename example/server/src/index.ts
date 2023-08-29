@@ -377,6 +377,48 @@ app.post('/create-setup-intent', async (req, res) => {
   });
 });
 
+app.post('/create-bacs-debit-setup-intent', async (req, res) => {
+  const {
+    email,
+    payment_method_types = [],
+  }: { email: string; payment_method_types: string[] } = req.body;
+  const { secret_key } = getKeys(payment_method_types[0]);
+
+  const stripe = new Stripe(secret_key as string, {
+    apiVersion: '2022-08-01',
+    typescript: true,
+  });
+  const customer = await stripe.customers.create({ email });
+
+  // const payPalIntentPayload = {
+  //   return_url: 'https://example.com/setup/complete',
+  //   payment_method_options: { paypal: { currency: 'eur' } },
+  //   payment_method_types: [...payment_method_types],
+  //   // mandate_data: {
+  //   //   customer_acceptance: {
+  //   //     type: 'online',
+  //   //     online: {
+  //   //       ip_address: '',
+  //   //       user_agent: '',
+  //   //     },
+  //   //   },
+  //   // },
+  //   // confirm: true,
+  // };
+
+  //@ts-ignore
+  const setupIntent = await stripe.setupIntents.create({
+    ...{ customer: customer.id, payment_method_types },
+    // ...(payment_method_types?.includes('paypal') ? payPalIntentPayload : {}),
+  });
+
+  // Send publishable key and SetupIntent details to client
+  return res.send({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    clientSecret: setupIntent.client_secret,
+  });
+});
+
 // Expose a endpoint as a webhook handler for asynchronous events.
 // Configure your webhook in the stripe developer dashboard:
 // https://dashboard.stripe.com/test/webhooks

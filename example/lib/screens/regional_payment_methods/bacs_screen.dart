@@ -71,12 +71,12 @@ class _BacsScreenState extends State<BacsScreen> {
         email: 'email@stripe.com',
         phone: '+48888000888',
         address: Address(
-          city: 'Houston',
-          country: 'US',
+          city: 'London',
+          country: 'GB',
           line1: '1459  Circle Drive',
           line2: '',
-          state: 'Texas',
-          postalCode: '77063',
+          state: '',
+          postalCode: '',
         ),
       ); // mocked data for tests
 
@@ -96,14 +96,17 @@ class _BacsScreenState extends State<BacsScreen> {
           params: PaymentMethodParams.bacsDebit(
             paymentMethodData: PaymentMethodDataBacs(
               sortCode: _sortCodeController.text,
-              accountNumber: _accountNumberController.text, 
-              billingDetails: billingDetails
-            )
+              accountNumber: _accountNumberController.text,
+              billingDetails: billingDetails,
+            ),
+          ),
+          options: PaymentMethodOptions(
+            setupFutureUsage: PaymentIntentsFutureUsage.OffSession,
           ),
         );
 
-        ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Payment Method successfully added')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Payment Method successfully added')));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
@@ -113,7 +116,7 @@ class _BacsScreenState extends State<BacsScreen> {
   }
 
   Future<Map<String, dynamic>> _createPaymentSetupIntent() async {
-    final url = Uri.parse('$kApiUrl/create-setup-intent');
+    final url = Uri.parse('$kApiUrl/create-bacs-debit-setup-intent');
     final response = await http.post(
       url,
       headers: {

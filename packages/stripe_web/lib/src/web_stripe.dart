@@ -2,6 +2,7 @@
 import 'dart:developer' as dev;
 import 'dart:html';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -181,21 +182,58 @@ class WebStripe extends StripePlatform {
     PaymentMethodParams data,
     PaymentMethodOptions? options,
   ) async {
-    final response = await data
-        .maybeWhen<Future<stripe_js.SetupIntentResponse>>(card: (params) {
-      final data = stripe_js.ConfirmCardSetupData(
-        paymentMethod: stripe_js.CardPaymentMethodDetails(
-          card: element!,
-          billingDetails: params.billingDetails?.toJs(),
-        ),
-      );
-      return js.confirmCardSetup(
-        setupIntentClientSecret,
-        data: data,
-      );
-    }, orElse: () {
-      throw UnimplementedError();
-    });
+    final response =
+        await data.maybeWhen<Future<stripe_js.SetupIntentResponse>>(
+      card: (params) {
+        final data = stripe_js.ConfirmCardSetupData(
+          paymentMethod: stripe_js.CardPaymentMethodDetails(
+            card: element!,
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        print('_confirmCardSetup: ${data.toJson()}');
+        return js.confirmCardSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
+      },
+      sepaDebit: (params) {
+        final data = stripe_js.ConfirmSepaDebitSetupData(
+          // paymentMethod: params.toString(),
+          paymentMethod: stripe_js.SepaDebitPaymentMethodDetails.withIban(
+            sepaDebit: stripe_js.SepaDebitIbanData(iban: params.iban),
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        print('_confirmSepaSetup: ${data.toJson()}');
+        return js.confirmSepaDebitSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
+      },
+      bacsDebit: (params) {
+        final data = stripe_js.ConfirmBacsDebitSetupData(
+          // paymentMethod: params.toString(),
+          paymentMethod: stripe_js.BacsDebitPaymentMethodDetails.withValue(
+            bacsDebit: stripe_js.BacsDebitData(
+              accountNumber: params.accountNumber,
+              sortCode: params.sortCode,
+            ),
+            billingDetails: params.billingDetails?.toJs(),
+          ),
+        );
+        if (kDebugMode) {
+          print('_confirmBacsSetup: ${data.toJson()}');
+        }
+        return js.confirmBacsDebitSetup(
+          setupIntentClientSecret,
+          data: data,
+        );
+      },
+      orElse: () {
+        throw UnimplementedError();
+      },
+    );
     if (response.error != null) {
       throw response.error!;
     }
