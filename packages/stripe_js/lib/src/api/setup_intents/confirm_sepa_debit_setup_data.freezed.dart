@@ -22,8 +22,9 @@ ConfirmSepaDebitSetupData _$ConfirmSepaDebitSetupDataFromJson(
 /// @nodoc
 mixin _$ConfirmSepaDebitSetupData {
   /// The id of an existing PaymentMethod or an object of collected data.
-  @JsonKey(name: "payment_method")
-  String? get paymentMethod => throw _privateConstructorUsedError;
+  @paymentMethodDetailJsonKey
+  SepaDebitPaymentMethodDetails? get paymentMethod =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,11 @@ abstract class $ConfirmSepaDebitSetupDataCopyWith<$Res> {
           $Res Function(ConfirmSepaDebitSetupData) then) =
       _$ConfirmSepaDebitSetupDataCopyWithImpl<$Res, ConfirmSepaDebitSetupData>;
   @useResult
-  $Res call({@JsonKey(name: "payment_method") String? paymentMethod});
+  $Res call(
+      {@paymentMethodDetailJsonKey
+          SepaDebitPaymentMethodDetails? paymentMethod});
+
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -60,8 +65,21 @@ class _$ConfirmSepaDebitSetupDataCopyWithImpl<$Res,
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as SepaDebitPaymentMethodDetails?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod {
+    if (_value.paymentMethod == null) {
+      return null;
+    }
+
+    return $SepaDebitPaymentMethodDetailsCopyWith<$Res>(_value.paymentMethod!,
+        (value) {
+      return _then(_value.copyWith(paymentMethod: value) as $Val);
+    });
   }
 }
 
@@ -73,7 +91,12 @@ abstract class _$$_ConfirmCardSetupDataCopyWith<$Res>
       __$$_ConfirmCardSetupDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: "payment_method") String? paymentMethod});
+  $Res call(
+      {@paymentMethodDetailJsonKey
+          SepaDebitPaymentMethodDetails? paymentMethod});
+
+  @override
+  $SepaDebitPaymentMethodDetailsCopyWith<$Res>? get paymentMethod;
 }
 
 /// @nodoc
@@ -94,7 +117,7 @@ class __$$_ConfirmCardSetupDataCopyWithImpl<$Res>
       paymentMethod: freezed == paymentMethod
           ? _value.paymentMethod
           : paymentMethod // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as SepaDebitPaymentMethodDetails?,
     ));
   }
 }
@@ -103,15 +126,15 @@ class __$$_ConfirmCardSetupDataCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
   const _$_ConfirmCardSetupData(
-      {@JsonKey(name: "payment_method") this.paymentMethod});
+      {@paymentMethodDetailJsonKey this.paymentMethod});
 
   factory _$_ConfirmCardSetupData.fromJson(Map<String, dynamic> json) =>
       _$$_ConfirmCardSetupDataFromJson(json);
 
   /// The id of an existing PaymentMethod or an object of collected data.
   @override
-  @JsonKey(name: "payment_method")
-  final String? paymentMethod;
+  @paymentMethodDetailJsonKey
+  final SepaDebitPaymentMethodDetails? paymentMethod;
 
   @override
   String toString() {
@@ -148,7 +171,8 @@ class _$_ConfirmCardSetupData implements _ConfirmCardSetupData {
 
 abstract class _ConfirmCardSetupData implements ConfirmSepaDebitSetupData {
   const factory _ConfirmCardSetupData(
-          {@JsonKey(name: "payment_method") final String? paymentMethod}) =
+          {@paymentMethodDetailJsonKey
+              final SepaDebitPaymentMethodDetails? paymentMethod}) =
       _$_ConfirmCardSetupData;
 
   factory _ConfirmCardSetupData.fromJson(Map<String, dynamic> json) =
@@ -157,8 +181,8 @@ abstract class _ConfirmCardSetupData implements ConfirmSepaDebitSetupData {
   @override
 
   /// The id of an existing PaymentMethod or an object of collected data.
-  @JsonKey(name: "payment_method")
-  String? get paymentMethod;
+  @paymentMethodDetailJsonKey
+  SepaDebitPaymentMethodDetails? get paymentMethod;
   @override
   @JsonKey(ignore: true)
   _$$_ConfirmCardSetupDataCopyWith<_$_ConfirmCardSetupData> get copyWith =>

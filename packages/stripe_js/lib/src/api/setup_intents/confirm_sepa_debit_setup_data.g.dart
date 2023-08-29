@@ -8,7 +8,10 @@ part of 'confirm_sepa_debit_setup_data.dart';
 
 _$_ConfirmCardSetupData _$$_ConfirmCardSetupDataFromJson(Map json) =>
     _$_ConfirmCardSetupData(
-      paymentMethod: json['payment_method'] as String?,
+      paymentMethod: json['payment_method'] == null
+          ? null
+          : SepaDebitPaymentMethodDetails.fromJson(
+              Map<String, dynamic>.from(json['payment_method'] as Map)),
     );
 
 Map<String, dynamic> _$$_ConfirmCardSetupDataToJson(
@@ -21,6 +24,7 @@ Map<String, dynamic> _$$_ConfirmCardSetupDataToJson(
     }
   }
 
-  writeNotNull('payment_method', instance.paymentMethod);
+  writeNotNull('payment_method',
+      PaymentMethodDetails.toJsonConverter(instance.paymentMethod));
   return val;
 }
