@@ -20,14 +20,14 @@ dependencies:
     git:
       url: https://github.com/nguyenlamzx/flutter_stripe.git
       path: packages/stripe_platform_interface
-      ref: 4c89a51dee06126aedc2810f908a39318aebb953
+      ref: 515b169eaddc43b0c564dea673b7a6f0d8f8ef02
   js: ^0.6.3
   # stripe_js: ^3.2.0
   stripe_js:
     git:
       url: https://github.com/nguyenlamzx/flutter_stripe.git
       path: packages/stripe_js
-      ref: 4c89a51dee06126aedc2810f908a39318aebb953
+      ref: 515b169eaddc43b0c564dea673b7a6f0d8f8ef02
 
 dev_dependencies:
   flutter_test:
