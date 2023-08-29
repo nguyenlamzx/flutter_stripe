@@ -84,7 +84,7 @@ Map<String, dynamic> _$$_BacsDebitPaymentMethodDetailsToJson(
 _$_BacsDebitPaymentMethodDetailsWithIban
     _$$_BacsDebitPaymentMethodDetailsWithIbanFromJson(Map json) =>
         _$_BacsDebitPaymentMethodDetailsWithIban(
-          bacsDebit: BacsDebitIbanData.fromJson(
+          bacsDebit: BacsDebitData.fromJson(
               Map<String, dynamic>.from(json['bacs_debit'] as Map)),
           billingDetails: json['billing_details'] == null
               ? null
@@ -110,17 +110,15 @@ Map<String, dynamic> _$$_BacsDebitPaymentMethodDetailsWithIbanToJson(
   return val;
 }
 
-_$_BacsDebitIbanData _$$_BacsDebitIbanDataFromJson(Map json) =>
-    _$_BacsDebitIbanData(
-      accountNumber: json['accountNumber'] as String,
-      sortCode: json['sortCode'] as String,
+_$_BacsDebitData _$$_BacsDebitDataFromJson(Map json) => _$_BacsDebitData(
+      accountNumber: json['account_number'] as String,
+      sortCode: json['sort_code'] as String,
     );
 
-Map<String, dynamic> _$$_BacsDebitIbanDataToJson(
-        _$_BacsDebitIbanData instance) =>
+Map<String, dynamic> _$$_BacsDebitDataToJson(_$_BacsDebitData instance) =>
     <String, dynamic>{
-      'accountNumber': instance.accountNumber,
-      'sortCode': instance.sortCode,
+      'account_number': instance.accountNumber,
+      'sort_code': instance.sortCode,
     };
 
 _$_BacsBillingDetails _$$_BacsBillingDetailsFromJson(Map json) =>

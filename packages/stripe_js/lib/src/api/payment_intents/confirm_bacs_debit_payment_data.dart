@@ -57,7 +57,7 @@ class BacsDebitPaymentMethodDetails
   @FreezedUnionValue('bacs_debit')
   const factory BacsDebitPaymentMethodDetails.withValue({
     /// Uses the provided card or cardNumber Element for confirmation.
-    @JsonKey(name: "bacs_debit") required BacsDebitIbanData bacsDebit,
+    @JsonKey(name: "bacs_debit") required BacsDebitData bacsDebit,
 
     /// The customer's billing_details. name and email are required.
     @JsonKey(name: "billing_details") BillingDetails? billingDetails,
@@ -68,15 +68,17 @@ class BacsDebitPaymentMethodDetails
 }
 
 @freezed
-class BacsDebitIbanData with _$BacsDebitIbanData {
-  const factory BacsDebitIbanData({
+class BacsDebitData with _$BacsDebitData {
+  const factory BacsDebitData({
     /// An IBAN account number.
+    @JsonKey(name: "account_number")
     required String accountNumber,
+    @JsonKey(name: "sort_code")
     required String sortCode,
-  }) = _BacsDebitIbanData;
+  }) = _BacsDebitData;
 
-  factory BacsDebitIbanData.fromJson(Map<String, dynamic> json) =>
-      _$BacsDebitIbanDataFromJson(json);
+  factory BacsDebitData.fromJson(Map<String, dynamic> json) =>
+      _$BacsDebitDataFromJson(json);
 }
 
 /// Billing information associated with the payment method.

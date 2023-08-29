@@ -14,7 +14,7 @@ extension ExtensionConfirmBacsDebitSetup on Stripe {
   /// you can call this method without needing to provide any additional data.
   ///  These use cases are detailed in the sections that follow.
   ///
-  /// https://stripe.com/docs/js/setup_intents/confirm_card_setup
+  /// https://stripe.com/docs/js/setup_intents/confirm_bacs_debit_setup
   Future<SetupIntentResponse> confirmBacsDebitSetup(
     String clientSecret, {
     ConfirmBacsDebitSetupData? data,

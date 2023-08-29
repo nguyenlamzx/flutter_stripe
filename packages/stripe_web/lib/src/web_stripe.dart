@@ -2,6 +2,7 @@
 import 'dart:developer' as dev;
 import 'dart:html';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -265,14 +266,16 @@ class WebStripe extends StripePlatform {
         final data = stripe_js.ConfirmBacsDebitSetupData(
           // paymentMethod: params.toString(),
           paymentMethod: stripe_js.BacsDebitPaymentMethodDetails.withValue(
-            bacsDebit: stripe_js.BacsDebitIbanData(
+            bacsDebit: stripe_js.BacsDebitData(
               accountNumber: params.accountNumber,
               sortCode: params.sortCode,
             ),
             billingDetails: params.billingDetails?.toJs(),
           ),
         );
-        print('_confirmSepaSetup: ${data.toJson()}');
+        if (kDebugMode) {
+          print('_confirmSepaSetup: ${data.toJson()}');
+        }
         return js.confirmBacsDebitSetup(
           setupIntentClientSecret,
           data: data,

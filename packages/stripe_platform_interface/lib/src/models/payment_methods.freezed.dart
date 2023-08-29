@@ -12018,7 +12018,7 @@ mixin _$PaymentMethodDataSepa {
   String get iban => throw _privateConstructorUsedError;
 
   /// Billing information.
-  SepaBillingDetails? get billingDetails => throw _privateConstructorUsedError;
+  BillingDetails? get billingDetails => throw _privateConstructorUsedError;
 
   /// Shipping details
   ShippingDetails? get shippingDetails => throw _privateConstructorUsedError;

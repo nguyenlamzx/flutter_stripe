@@ -275,7 +275,7 @@ mixin _$BacsDebitPaymentMethodDetails {
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) =>
@@ -287,7 +287,7 @@ mixin _$BacsDebitPaymentMethodDetails {
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) =>
@@ -299,7 +299,7 @@ mixin _$BacsDebitPaymentMethodDetails {
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
@@ -437,7 +437,7 @@ class _$_IdBacsDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
@@ -452,7 +452,7 @@ class _$_IdBacsDebitPaymentMethodDetails
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
@@ -467,7 +467,7 @@ class _$_IdBacsDebitPaymentMethodDetails
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
@@ -655,7 +655,7 @@ class _$_BacsDebitPaymentMethodDetails
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
@@ -670,7 +670,7 @@ class _$_BacsDebitPaymentMethodDetails
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
@@ -685,7 +685,7 @@ class _$_BacsDebitPaymentMethodDetails
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
@@ -773,10 +773,10 @@ abstract class _$$_BacsDebitPaymentMethodDetailsWithIbanCopyWith<$Res> {
       __$$_BacsDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+      {@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
       @JsonKey(name: "billing_details") BillingDetails? billingDetails});
 
-  $BacsDebitIbanDataCopyWith<$Res> get bacsDebit;
+  $BacsDebitDataCopyWith<$Res> get bacsDebit;
   $BillingDetailsCopyWith<$Res>? get billingDetails;
 }
 
@@ -800,7 +800,7 @@ class __$$_BacsDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
       bacsDebit: null == bacsDebit
           ? _value.bacsDebit
           : bacsDebit // ignore: cast_nullable_to_non_nullable
-              as BacsDebitIbanData,
+              as BacsDebitData,
       billingDetails: freezed == billingDetails
           ? _value.billingDetails
           : billingDetails // ignore: cast_nullable_to_non_nullable
@@ -810,8 +810,8 @@ class __$$_BacsDebitPaymentMethodDetailsWithIbanCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $BacsDebitIbanDataCopyWith<$Res> get bacsDebit {
-    return $BacsDebitIbanDataCopyWith<$Res>(_value.bacsDebit, (value) {
+  $BacsDebitDataCopyWith<$Res> get bacsDebit {
+    return $BacsDebitDataCopyWith<$Res>(_value.bacsDebit, (value) {
       return _then(_value.copyWith(bacsDebit: value));
     });
   }
@@ -846,7 +846,7 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
   /// Uses the provided card or cardNumber Element for confirmation.
   @override
   @JsonKey(name: "bacs_debit")
-  final BacsDebitIbanData bacsDebit;
+  final BacsDebitData bacsDebit;
 
   /// The customer's billing_details. name and email are required.
   @override
@@ -893,7 +893,7 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
         $default, {
     required TResult Function(String id) id,
     required TResult Function(
-            @JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+            @JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)
         withValue,
   }) {
@@ -908,7 +908,7 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult? Function(String id)? id,
-    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult? Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
   }) {
@@ -923,7 +923,7 @@ class _$_BacsDebitPaymentMethodDetailsWithIban
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         $default, {
     TResult Function(String id)? id,
-    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitIbanData bacsDebit,
+    TResult Function(@JsonKey(name: "bacs_debit") BacsDebitData bacsDebit,
             @JsonKey(name: "billing_details") BillingDetails? billingDetails)?
         withValue,
     required TResult orElse(),
@@ -981,7 +981,7 @@ abstract class _BacsDebitPaymentMethodDetailsWithIban
     implements BacsDebitPaymentMethodDetails {
   const factory _BacsDebitPaymentMethodDetailsWithIban(
           {@JsonKey(name: "bacs_debit")
-              required final BacsDebitIbanData bacsDebit,
+              required final BacsDebitData bacsDebit,
           @JsonKey(name: "billing_details")
               final BillingDetails? billingDetails}) =
       _$_BacsDebitPaymentMethodDetailsWithIban;
@@ -992,7 +992,7 @@ abstract class _BacsDebitPaymentMethodDetailsWithIban
 
   /// Uses the provided card or cardNumber Element for confirmation.
   @JsonKey(name: "bacs_debit")
-  BacsDebitIbanData get bacsDebit;
+  BacsDebitData get bacsDebit;
 
   /// The customer's billing_details. name and email are required.
   @JsonKey(name: "billing_details")
@@ -1003,35 +1003,39 @@ abstract class _BacsDebitPaymentMethodDetailsWithIban
       get copyWith => throw _privateConstructorUsedError;
 }
 
-BacsDebitIbanData _$BacsDebitIbanDataFromJson(Map<String, dynamic> json) {
-  return _BacsDebitIbanData.fromJson(json);
+BacsDebitData _$BacsDebitDataFromJson(Map<String, dynamic> json) {
+  return _BacsDebitData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BacsDebitIbanData {
+mixin _$BacsDebitData {
   /// An IBAN account number.
+  @JsonKey(name: "account_number")
   String get accountNumber => throw _privateConstructorUsedError;
+  @JsonKey(name: "sort_code")
   String get sortCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BacsDebitIbanDataCopyWith<BacsDebitIbanData> get copyWith =>
+  $BacsDebitDataCopyWith<BacsDebitData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BacsDebitIbanDataCopyWith<$Res> {
-  factory $BacsDebitIbanDataCopyWith(
-          BacsDebitIbanData value, $Res Function(BacsDebitIbanData) then) =
-      _$BacsDebitIbanDataCopyWithImpl<$Res, BacsDebitIbanData>;
+abstract class $BacsDebitDataCopyWith<$Res> {
+  factory $BacsDebitDataCopyWith(
+          BacsDebitData value, $Res Function(BacsDebitData) then) =
+      _$BacsDebitDataCopyWithImpl<$Res, BacsDebitData>;
   @useResult
-  $Res call({String accountNumber, String sortCode});
+  $Res call(
+      {@JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "sort_code") String sortCode});
 }
 
 /// @nodoc
-class _$BacsDebitIbanDataCopyWithImpl<$Res, $Val extends BacsDebitIbanData>
-    implements $BacsDebitIbanDataCopyWith<$Res> {
-  _$BacsDebitIbanDataCopyWithImpl(this._value, this._then);
+class _$BacsDebitDataCopyWithImpl<$Res, $Val extends BacsDebitData>
+    implements $BacsDebitDataCopyWith<$Res> {
+  _$BacsDebitDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1058,22 +1062,24 @@ class _$BacsDebitIbanDataCopyWithImpl<$Res, $Val extends BacsDebitIbanData>
 }
 
 /// @nodoc
-abstract class _$$_BacsDebitIbanDataCopyWith<$Res>
-    implements $BacsDebitIbanDataCopyWith<$Res> {
-  factory _$$_BacsDebitIbanDataCopyWith(_$_BacsDebitIbanData value,
-          $Res Function(_$_BacsDebitIbanData) then) =
-      __$$_BacsDebitIbanDataCopyWithImpl<$Res>;
+abstract class _$$_BacsDebitDataCopyWith<$Res>
+    implements $BacsDebitDataCopyWith<$Res> {
+  factory _$$_BacsDebitDataCopyWith(
+          _$_BacsDebitData value, $Res Function(_$_BacsDebitData) then) =
+      __$$_BacsDebitDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String accountNumber, String sortCode});
+  $Res call(
+      {@JsonKey(name: "account_number") String accountNumber,
+      @JsonKey(name: "sort_code") String sortCode});
 }
 
 /// @nodoc
-class __$$_BacsDebitIbanDataCopyWithImpl<$Res>
-    extends _$BacsDebitIbanDataCopyWithImpl<$Res, _$_BacsDebitIbanData>
-    implements _$$_BacsDebitIbanDataCopyWith<$Res> {
-  __$$_BacsDebitIbanDataCopyWithImpl(
-      _$_BacsDebitIbanData _value, $Res Function(_$_BacsDebitIbanData) _then)
+class __$$_BacsDebitDataCopyWithImpl<$Res>
+    extends _$BacsDebitDataCopyWithImpl<$Res, _$_BacsDebitData>
+    implements _$$_BacsDebitDataCopyWith<$Res> {
+  __$$_BacsDebitDataCopyWithImpl(
+      _$_BacsDebitData _value, $Res Function(_$_BacsDebitData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1082,7 +1088,7 @@ class __$$_BacsDebitIbanDataCopyWithImpl<$Res>
     Object? accountNumber = null,
     Object? sortCode = null,
   }) {
-    return _then(_$_BacsDebitIbanData(
+    return _then(_$_BacsDebitData(
       accountNumber: null == accountNumber
           ? _value.accountNumber
           : accountNumber // ignore: cast_nullable_to_non_nullable
@@ -1097,29 +1103,32 @@ class __$$_BacsDebitIbanDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BacsDebitIbanData implements _BacsDebitIbanData {
-  const _$_BacsDebitIbanData(
-      {required this.accountNumber, required this.sortCode});
+class _$_BacsDebitData implements _BacsDebitData {
+  const _$_BacsDebitData(
+      {@JsonKey(name: "account_number") required this.accountNumber,
+      @JsonKey(name: "sort_code") required this.sortCode});
 
-  factory _$_BacsDebitIbanData.fromJson(Map<String, dynamic> json) =>
-      _$$_BacsDebitIbanDataFromJson(json);
+  factory _$_BacsDebitData.fromJson(Map<String, dynamic> json) =>
+      _$$_BacsDebitDataFromJson(json);
 
   /// An IBAN account number.
   @override
+  @JsonKey(name: "account_number")
   final String accountNumber;
   @override
+  @JsonKey(name: "sort_code")
   final String sortCode;
 
   @override
   String toString() {
-    return 'BacsDebitIbanData(accountNumber: $accountNumber, sortCode: $sortCode)';
+    return 'BacsDebitData(accountNumber: $accountNumber, sortCode: $sortCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BacsDebitIbanData &&
+            other is _$_BacsDebitData &&
             (identical(other.accountNumber, accountNumber) ||
                 other.accountNumber == accountNumber) &&
             (identical(other.sortCode, sortCode) ||
@@ -1133,35 +1142,37 @@ class _$_BacsDebitIbanData implements _BacsDebitIbanData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BacsDebitIbanDataCopyWith<_$_BacsDebitIbanData> get copyWith =>
-      __$$_BacsDebitIbanDataCopyWithImpl<_$_BacsDebitIbanData>(
-          this, _$identity);
+  _$$_BacsDebitDataCopyWith<_$_BacsDebitData> get copyWith =>
+      __$$_BacsDebitDataCopyWithImpl<_$_BacsDebitData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BacsDebitIbanDataToJson(
+    return _$$_BacsDebitDataToJson(
       this,
     );
   }
 }
 
-abstract class _BacsDebitIbanData implements BacsDebitIbanData {
-  const factory _BacsDebitIbanData(
-      {required final String accountNumber,
-      required final String sortCode}) = _$_BacsDebitIbanData;
+abstract class _BacsDebitData implements BacsDebitData {
+  const factory _BacsDebitData(
+          {@JsonKey(name: "account_number") required final String accountNumber,
+          @JsonKey(name: "sort_code") required final String sortCode}) =
+      _$_BacsDebitData;
 
-  factory _BacsDebitIbanData.fromJson(Map<String, dynamic> json) =
-      _$_BacsDebitIbanData.fromJson;
+  factory _BacsDebitData.fromJson(Map<String, dynamic> json) =
+      _$_BacsDebitData.fromJson;
 
   @override
 
   /// An IBAN account number.
+  @JsonKey(name: "account_number")
   String get accountNumber;
   @override
+  @JsonKey(name: "sort_code")
   String get sortCode;
   @override
   @JsonKey(ignore: true)
-  _$$_BacsDebitIbanDataCopyWith<_$_BacsDebitIbanData> get copyWith =>
+  _$$_BacsDebitDataCopyWith<_$_BacsDebitData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
