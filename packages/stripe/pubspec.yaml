@@ -29,19 +29,19 @@ dependencies:
     git:
       url: https://github.com/nguyenlamzx/flutter_stripe.git
       path: packages/stripe_android
-      ref: 89de7de8e52c2ca410b2d1cc87f2ceced5be399d
+      ref: a014e8999728283e2f70e6fbb9938519f54554f2
   # stripe_ios: ^9.1.0
   stripe_ios:
     git:
       url: https://github.com/nguyenlamzx/flutter_stripe.git
       path: packages/stripe_ios
-      ref: 89de7de8e52c2ca410b2d1cc87f2ceced5be399d
+      ref: a014e8999728283e2f70e6fbb9938519f54554f2
   # stripe_platform_interface: ^9.1.0
   stripe_platform_interface:
     git:
       url: https://github.com/nguyenlamzx/flutter_stripe.git
       path: packages/stripe_platform_interface
-      ref: 89de7de8e52c2ca410b2d1cc87f2ceced5be399d
+      ref: a014e8999728283e2f70e6fbb9938519f54554f2
 
 dev_dependencies:
   flutter_test:
